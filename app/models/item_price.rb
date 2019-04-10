@@ -9,7 +9,7 @@ class ItemPrice < ApplicationRecord
   # Scopes
   scope :current,       -> { where(end_date:nil) }
   scope :chronological, -> { order(start_date: :desc ) }
-  scope :for_date,      ->(date) { where("start_date <= ? AND (end_date > ? OR end_date IS NULL)", date, date) }
+  scope :for_date,      ->(date) { where("start_date <= ? AND (end_date >= ? OR end_date IS NULL)", date, date) }
   scope :for_item,      ->(item_id) { where(item_id: item_id) }
 
   # Validations

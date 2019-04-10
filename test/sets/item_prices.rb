@@ -27,7 +27,7 @@ module Contexts
       @hw3.update_attribute(:end_date, 6.months.ago.to_date - 1)
       @hw5 = FactoryBot.create(:item_price, item: @honey_wheat, price: 5.25, start_date: 4.weeks.ago.to_date)
       @hw5.update_attribute(:start_date, 4.weeks.ago.to_date)
-      @hw5.update_attribute(:end_date, 4.weeks.ago.to_date - 1)
+      @hw4.update_attribute(:end_date, 4.weeks.ago.to_date - 1)
 
       @cs1 = FactoryBot.create(:item_price, item: @cinnamon_swirl, price: 4.25, start_date: 24.months.ago.to_date)
       @cs1.update_attribute(:start_date, 24.months.ago.to_date)

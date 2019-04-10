@@ -19,15 +19,16 @@ module Populator
           order.update_attribute(:date, new_date)
           order.reload
           total = 0
-          [1,1,2,2,2,3,3,4,5,6].sample.times do |j|
+          # puts "ORDER #{order.id}"
+          [1,1,2,2,2,3,3,4,5].sample.times do |j|
             this_item = customer_selections.pop
             oi = OrderItem.new
             oi.item_id = this_item.id
             oi.order_id = order.id
             oi.quantity = [1,2,3,4].sample
             oi.save!
-            puts "ORDER: #{oi.item.name} QUANTITY: #{oi.quantity}"
-            total += oi.subtotal(new_date)
+            # puts "  --item #{oi.item.id}"
+            total += oi.subtotal(order.date)
           end
           # record total and payment
           total += order.shipping_costs
