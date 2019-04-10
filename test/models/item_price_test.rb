@@ -7,7 +7,7 @@ class ItemPriceTest < ActiveSupport::TestCase
   # test validations with matchers
   should validate_presence_of(:item_id)
   should validate_numericality_of(:price).is_greater_than_or_equal_to(0)
-  # should allow_value(Date.today).for(:start_date)
+  # should allow_value(Date.current).for(:start_date)
   # should allow_value(1.day.ago.to_date).for(:start_date)
   # should allow_value(1.day.from_now.to_date).for(:start_date)
   # should_not allow_value("bad").for(:start_date)
@@ -44,7 +44,7 @@ class ItemPriceTest < ActiveSupport::TestCase
       assert_nil @bl3.end_date
       @change_price = FactoryBot.create(:item_price, item: @blueberry, price: 10.95)
       @bl3.reload
-      assert_equal Date.today, @bl3.end_date
+      assert_equal Date.current, @bl3.end_date
     end
 
     should "verify that the new price start_date set to tomorrow" do

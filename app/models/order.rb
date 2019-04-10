@@ -34,8 +34,9 @@ class Order < ApplicationRecord
   end
 
   # Validations
-  validates_date :date
+  # validates_date :date
   # validates_numericality_of :grand_total, greater_than_or_equal_to: 0, allow_blank: true
+  validates_presence_of :customer_id, :address_id
   validate :customer_is_active_in_system
   validate :address_is_active_in_system
   validate :credit_card_number_is_valid

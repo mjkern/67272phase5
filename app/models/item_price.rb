@@ -33,7 +33,7 @@ class ItemPrice < ApplicationRecord
 
   def set_end_date_of_old_price
     previous = ItemPrice.current.for_item(self.item_id).take
-    previous.update_attribute(:end_date, Date.today) unless previous.nil?
+    previous.update_attribute(:end_date, Date.current) unless previous.nil?
   end
 
   def set_start_date_to_tomorrow

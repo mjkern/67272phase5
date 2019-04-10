@@ -14,8 +14,10 @@ module Populator
           order.expiration_month = Date.current.month
           order.customer_id = customer.id
           order.address_id = c_address_ids.sample
-          order.date = (5.months.ago.to_date..2.days.ago.to_date).to_a.sample
           order.save!
+          new_date = (5.months.ago.to_date..2.days.ago.to_date).to_a.sample
+          order.update_attribute(:date, new_date)
+          order.reload
           total = 0
           [1,1,2,2,2,3,3,4,5,6].sample.times do |j|
             this_item = customer_selections.pop
@@ -24,7 +26,8 @@ module Populator
             oi.order_id = order.id
             oi.quantity = [1,2,3,4].sample
             oi.save!
-            total += oi.subtotal(order.date)
+            puts "ORDER: #{oi.item.name} QUANTITY: #{oi.quantity}"
+            total += oi.subtotal(new_date)
           end
           # record total and payment
           total += order.shipping_costs

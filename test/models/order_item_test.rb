@@ -9,7 +9,7 @@ class OrderItemTest < ActiveSupport::TestCase
   should validate_presence_of(:item_id)
   should validate_presence_of(:order_id)
   should validate_numericality_of(:quantity).only_integer.is_greater_than(0)
-  should allow_value(Date.today).for(:shipped_on)
+  should allow_value(Date.current).for(:shipped_on)
   should allow_value(1.day.ago.to_date).for(:shipped_on)
   should allow_value(1.day.from_now.to_date).for(:shipped_on)
   should_not allow_value("bad").for(:shipped_on)

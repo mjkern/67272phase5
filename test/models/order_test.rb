@@ -11,12 +11,14 @@ class OrderTest < ActiveSupport::TestCase
 
   # test simple validations with matchers
   # should validate_numericality_of(:grand_total).is_greater_than_or_equal_to(0)
-  should allow_value(Date.today).for(:date)
-  should allow_value(1.day.ago.to_date).for(:date)
-  should allow_value(1.day.from_now.to_date).for(:date)
-  should_not allow_value("bad").for(:date)
-  should_not allow_value(2).for(:date)
-  should_not allow_value(3.14159).for(:date)
+  should validate_presence_of(:customer_id)
+  should validate_presence_of(:address_id)
+  # should allow_value(Date.current).for(:date)
+  # should allow_value(1.day.ago.to_date).for(:date)
+  # should allow_value(1.day.from_now.to_date).for(:date)
+  # should_not allow_value("bad").for(:date)
+  # should_not allow_value(2).for(:date)
+  # should_not allow_value(3.14159).for(:date)
  
    context "Within context" do
     setup do 
@@ -205,14 +207,14 @@ class OrderTest < ActiveSupport::TestCase
       assert @melanie_o2.valid?
       @melanie_o2.expiration_year = 1.year.ago.year
       deny @melanie_o2.valid?
-      @melanie_o2.expiration_year = Date.today.year
-      @melanie_o2.expiration_month = Date.today.month
+      @melanie_o2.expiration_year = Date.current.year
+      @melanie_o2.expiration_month = Date.current.month
       assert @melanie_o2.valid?
-      @melanie_o2.expiration_year = Date.today.year
-      @melanie_o2.expiration_month = Date.today.month - 1
+      @melanie_o2.expiration_year = Date.current.year
+      @melanie_o2.expiration_month = Date.current.month - 1
       deny @melanie_o2.valid?
-      @melanie_o2.expiration_year = Date.today.year
-      @melanie_o2.expiration_month = Date.today.month + 1
+      @melanie_o2.expiration_year = Date.current.year
+      @melanie_o2.expiration_month = Date.current.month + 1
       assert @melanie_o2.valid?
     end
 
