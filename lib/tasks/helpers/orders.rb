@@ -2,12 +2,14 @@ module Populator
   module Orders
     def create_orders_for(customers)
       all_items = Item.all
-
+      puts "Creating a set of orders for every customer..."
+      count = 0
       customers.each do |customer|
+        count += 1
+        puts " -- created orders for #{count} customers" if count%10==0
         c_address_ids = customer.addresses.map(&:id)
         customer_selections = all_items.shuffle
         [1,1,1,2,2,2,2,3,3,3,3,4,4,5,6,7,9,10,12].sample.times do |i|
-        # (1..12).to_a.sample.times do |i|
           order = Order.new
           order.credit_card_number = '4123456789012'
           order.expiration_year = Date.current.year
@@ -19,7 +21,6 @@ module Populator
           order.update_attribute(:date, new_date)
           order.reload
           total = 0
-          # puts "ORDER #{order.id}"
           [1,1,2,2,2,3,3,4,5].sample.times do |j|
             this_item = customer_selections.pop
             oi = OrderItem.new
@@ -27,7 +28,6 @@ module Populator
             oi.order_id = order.id
             oi.quantity = [1,2,3,4].sample
             oi.save!
-            # puts "  --item #{oi.item.id}"
             total += oi.subtotal(order.date)
           end
           # record total and payment
@@ -40,7 +40,6 @@ module Populator
           customer_selections = all_items.shuffle
         end
       end
-
     end
   end
 end

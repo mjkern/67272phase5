@@ -4,7 +4,11 @@ module Populator
     
     def create_customers
       all_customers = Array.new
+      puts "Creating customers..."
+      count = 0
       120.times do
+        count += 1
+        puts " -- created #{count} customers" if count%10==0
         first_name = Faker::Name.first_name
         last_name = Faker::Name.last_name
         this_user = FactoryBot.create(:user)
