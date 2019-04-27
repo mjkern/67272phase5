@@ -1,1 +1,12 @@
-<h4>Popular Items</h4>
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Popular Items</span>
+    <div class="row">
+      <% for item in get_pop_items() %>
+        <div class="col s3">
+          <%= render partial: 'partials/item_preview' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
