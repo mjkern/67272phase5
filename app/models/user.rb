@@ -35,8 +35,8 @@ class User < ApplicationRecord
   before_destroy :cannot_destroy_object
 
   # Authentication
-  def self.authenticate(email,password)
-    find_by_email(email).try(:authenticate, password)
+  def self.authenticate(username, password)
+    find_by_username(username).try(:authenticate, password)
   end
 
 end

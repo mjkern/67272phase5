@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   resources :orders
 
   # Logging in and out
+  resources :sessions
   get 'login' => 'sessions#new', as: :login
-  get 'logout' => 'sessions#destry', as: :logout
+  get 'logout' => 'sessions#destroy', as: :logout
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
