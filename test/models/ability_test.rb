@@ -21,11 +21,11 @@ class AbilityTest < ActiveSupport::TestCase
       assert @melanie_ability.can? :show, @melanie_o1
       deny @melanie_ability.can? :show, @alexe_o1
       assert @melanie_ability.can? :show, @melanie
-      deny @melanie_ability.can? :show, @alexe 
+      deny @melanie_ability.can? :show, @alexe
       assert @melanie_ability.can? :update, @melanie
       deny @melanie_ability.can? :update, @alexe
       assert @melanie_ability.can? :show, @u_melanie
-      deny @melanie_ability.can? :show, @u_alexe 
+      deny @melanie_ability.can? :show, @u_alexe
       assert @melanie_ability.can? :update, @u_melanie
       deny @melanie_ability.can? :update, @u_alexe
       assert @melanie_ability.can? :index, Order
