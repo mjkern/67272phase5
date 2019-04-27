@@ -2,7 +2,7 @@
   before_action :check_login, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   authorize_resource
-  
+
   def index
     # get info on active items for the big three...
     @breads = Item.active.for_category('bread').alphabetical.paginate(:page => params[:page]).per_page(10)
