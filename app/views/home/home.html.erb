@@ -1,1 +1,12 @@
-<%= render :partial => 'customer_home' %>
+
+<% if !logged_in? %>
+  <%= render :partial => 'general_home' %>
+<% elsif current_user.role?(:customer) %>
+  <%= render :partial => 'customer_home' %>
+<% elsif current_user.role?(:admin) %>
+  <%= render :partial => 'admin_home' %>
+<% elsif current_user.role?(:baker) %>
+  <%= render :partial => 'baker_home' %>
+<% elsif current_user.role?(:shipper) %>
+  <%= render :partial => 'shipper_home' %>
+<% end %>

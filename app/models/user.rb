@@ -36,7 +36,8 @@ class User < ApplicationRecord
 
   # Authentication
   def self.authenticate(username, password)
-    find_by_username(username).try(:authenticate, password)
+    # notice that usernames are not case sensitive
+    find_by_username(username.downcase).try(:authenticate, password)
   end
 
 end
