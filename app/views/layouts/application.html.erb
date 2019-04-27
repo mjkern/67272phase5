@@ -4,33 +4,35 @@
     <title>Baking Factory System</title>
     <%= csrf_meta_tags %>
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="<%= image_path 'logo.png' %>" />
+
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%# javascript_include_tag 'application' %>
-    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
-    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Bitter|Josefin+Sans|Nunito|Varela+Round" %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <header>
-    <!-- Partials for the topbar and navigation -->
-    <%= render :partial => "partials/topbar" %>
-    <%= render :partial => "partials/nav" %>
+      <%# render :partial => "partials/topbar" %>
+      <%= render :partial => "partials/nav" %>
     </header>
-    <main>
-    <div class="container">
-      <div class="row">
-        <div class="col s12" id="main_content">
-          <!-- Flash messages appear here -->
-          <%= render :partial => "partials/flash" %>
 
-          <!-- MAIN CONTENT OF TEMPLATE GOES HERE -->
-          <%= yield %>
+    <main>
+    <!--<div class="container">
+        <div class="row">
+          <div id="main_content" class="col s12">
+
+            <%# render :partial => 'partials/flash' %>
+
+            <%= yield %>
+
+          </div>
         </div>
-      </div>
-    </div>
+    </div>-->
+      <%= yield %>
     </main>
-    
-    <%= render :partial => "partials/footer" %> 
-    <%= javascript_include_tag 'application' %>   
+
+    <%= render :partial => "partials/footer" %>
   </body>
 </html>
