@@ -9,6 +9,16 @@ module ApplicationHelper
   end
 
   def get_pop_items(count=4)
+    # highest total quantity sold
     Item.all.joins(:order_items).group("id").order("SUM(quantity)").limit(count)
+  end
+
+  def get_fav_items(count=4)
+    # most ordered by this customer
+    if current_customer
+      current_customer.orders.joins(:items).group("items.id").order("COUNT(orders.id)").limit(4).select("items.*")
+    else
+      nil
+    end
   end
 end

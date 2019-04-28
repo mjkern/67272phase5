@@ -1,1 +1,3 @@
-<h4>Favorite Items</h4>
+<%= render partial: 'partials/item_showcase',
+  locals: {title: "You're Favorites",
+           items: get_fav_items} %>

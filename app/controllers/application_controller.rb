@@ -17,4 +17,9 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, alert: "You need to log in to view this page." if current_user.nil?
   end
 
+  def current_customer
+    @current_customer ||= current_user.customer
+  end
+  helper_method :current_customer
+
 end
