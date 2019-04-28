@@ -1,12 +1,3 @@
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">Popular Items</span>
-    <div class="row">
-      <% for item in get_pop_items() %>
-        <div class="col s3">
-          <%= render partial: 'partials/item_preview' %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= render partial: 'partials/item_showcase',
+  locals: {title: "Popular Items",
+           items: get_pop_items} %>
