@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   scope :active,       -> { where(active: true) }
   scope :inactive,     -> { where(active: false) }
   scope :for_category, ->(category) { where(category: category) }
-  
+
   # Validations
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates_numericality_of :units_per_item, only_integer: true, greater_than: 0
@@ -46,7 +46,7 @@ class Item < ApplicationRecord
   end
 
   # Callbacks
-  before_destroy do 
+  before_destroy do
     check_if_ever_associated_with_an_order
     if errors.present?
       @destroyable = false
