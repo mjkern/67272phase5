@@ -58,12 +58,17 @@ main {
 }
 
 // for title bar
-img.title-icon {
-  height: 2em;
+.nav-wrapper img {
+  height: 4em;
   margin: 0.2em;
-  float: left
+  //float: left
 }
 
 .brand-logo {
   float: left;
+}
+
+.brand-logo img {
+  height: 2em;
+  margin: 0.2em;
 }

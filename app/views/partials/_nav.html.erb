@@ -1,3 +1,4 @@
+<!--
 <nav id="nav">
   <div class="container">
     <ul class="right">
@@ -10,6 +11,33 @@
           <br>[<%= current_user.username %>:<%= current_user.role %>]
         <% else %>
           <%= link_to 'Login', login_path %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
+-->
+
+
+<nav class="nav-extended">
+  <div class="nav-wrapper">
+    <%= link_to(image_tag('logo.png'), home_path) %>
+    <a href="<%= home_path %>" class="brand-logo">The Baking Factory</a>
+  </div>
+  <div class="nav-content">
+    <span class="nav-title"></span>
+    <ul class="right valign-wrapper">
+      <li><%= link_to 'Customers', customers_path %></li>
+      <li><%= link_to 'Addresses', addresses_path %></li>
+      <li><%= link_to 'Orders', orders_path %></li>
+      <li><a class="btn-floating btn waves-effect waves-light red"><i class="material-icons">shopping_cart</i></a></li>
+      <li><a class="btn-floating btn-flat disabled" style="margin-left: -100%"><p class="center" style="margin-top: -0.5em; color: #000000">3</p></a></li>
+      <li>
+				<% if logged_in? %>
+          <%= link_to 'Logout', logout_path, class: "waves-effect waves-light btn" %>
+          <!--<br>[<%= current_user.username %>:<%= current_user.role %>]-->
+        <% else %>
+          <%= link_to 'Login', login_path, class: "waves-effect waves-light btn" %>
         <% end %>
       </li>
     </ul>
