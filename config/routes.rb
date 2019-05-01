@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', as: :login
   get 'logout' => 'sessions#destroy', as: :logout
 
+  # cart
+  post 'add-to-cart/:id' => 'session#add_item_to_cart', as: :add_cart
+
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
   get 'about' => 'home#about', as: :about

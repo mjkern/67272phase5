@@ -31,7 +31,7 @@
       <li><%= link_to 'Addresses', addresses_path %></li>
       <li><%= link_to 'Orders', orders_path %></li>
       <li><a class="btn-floating btn waves-effect waves-light red"><i class="material-icons">shopping_cart</i></a></li>
-      <li><a class="btn-floating btn-flat disabled" style="margin-left: -100%"><p class="center" style="margin-top: -0.5em; color: #000000">3</p></a></li>
+      <li><a class="btn-floating btn-flat disabled" style="margin-left: -100%;"><p class="center" style="margin-top: -0.5em; color: #000000"><%= cart_size %></p></a></li>
       <li>
 				<% if logged_in? %>
           <%= link_to 'Logout', logout_path, class: "waves-effect waves-light btn" %>

@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def get_address_options(user=nil)
     if user.nil? || user.role?(:admin)
       addresses = Address.active.by_recipient.to_a
@@ -21,6 +22,16 @@ module ApplicationHelper
       Item.all.joins(:order_items).joins(:orders).where("orders.customer_id = ?", current_customer.id).group("items.id").order("SUM(order_items.quantity)").limit(4)
     else
       nil
+    end
+  end
+
+  def cart_size
+    if session[:cart]
+      count = 0
+      session[:cart].each do |item_id, quantity| count += quantity end
+      count
+    else
+      0
     end
   end
 end
