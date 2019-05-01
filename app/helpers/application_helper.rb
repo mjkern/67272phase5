@@ -16,7 +16,9 @@ module ApplicationHelper
   def get_fav_items(count=4)
     # most ordered by this customer
     if current_customer
-      current_customer.orders.joins(:items).group("items.id").order("COUNT(orders.id)").limit(4).select("items.*")
+      #current_customer.orders.joins(:items).group("items.id").order("COUNT(orders.id)").limit(4).select("items.*")
+      #Item.all.joins(:order_items).group("id").where("order_items.customer_id = ?", current_customer.id)
+      Item.all.joins(:order_items).joins(:orders).where("orders.customer_id = ?", current_customer.id).group("items.id").order("SUM(order_items.quantity)").limit(4)
     else
       nil
     end
