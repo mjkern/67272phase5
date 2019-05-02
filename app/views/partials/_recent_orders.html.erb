@@ -7,7 +7,13 @@
       <% for order in get_recent_orders %>
         <li<%= first ? " class=active" : '' %>>
           <div class="collapsible-header"><%= order.date %></div>
-          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+          <div class="collapsible-body">
+            <ul class="collection">
+              <% for item in order.items %>
+                <li class="collection-item"><div><%= item.name %><a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+              <% end %>
+						</ul>
+          </div>
         </li>
         <% first = false %>
       <% end %>
