@@ -19,7 +19,15 @@ module ApplicationHelper
     if current_customer
       #current_customer.orders.joins(:items).group("items.id").order("COUNT(orders.id)").limit(4).select("items.*")
       #Item.all.joins(:order_items).group("id").where("order_items.customer_id = ?", current_customer.id)
-      Item.all.joins(:order_items).joins(:orders).where("orders.customer_id = ?", current_customer.id).group("items.id").order("SUM(order_items.quantity)").limit(4)
+      Item.all.joins(:order_items).joins(:orders).where("orders.customer_id = ?", current_customer.id).group("items.id").order("SUM(order_items.quantity)").limit(count)
+    else
+      nil
+    end
+  end
+
+  def get_recent_orders(count=7)
+    if current_customer
+      Order.chronological.where("customer_id = ?", current_customer.id).limit(count)
     else
       nil
     end

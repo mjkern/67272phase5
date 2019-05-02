@@ -31,6 +31,11 @@ $(document).ready(function(){
   };
   var instances = M.Dropdown.init(elems, options);
 
+  // collabsible
+  var elems = document.querySelectorAll('.collapsible');
+  var options = {}
+  var instances = M.Collapsible.init(elems, options);
+
 });
 
 // for Flash fade - from pats - not my own work

@@ -1,4 +1,16 @@
-<h4>Recent Orders</h4>
-<p>
-<%= session[:cart] %>
-</p>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Recent Orders</span>
+    <ul class="collapsible">
+      <% first = true %>
+      <% for order in get_recent_orders %>
+        <li<%= first ? " class=active" : '' %>>
+          <div class="collapsible-header"><%= order.date %></div>
+          <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        </li>
+        <% first = false %>
+      <% end %>
+    </ul>
+  </div>
+</div>
