@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :customers
   resources :orders
   resources :items
+  resources :users
 
   # Logging in and out
   resources :sessions

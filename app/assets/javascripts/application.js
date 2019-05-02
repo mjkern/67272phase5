@@ -12,15 +12,25 @@
 //
 //= require jquery
 //= require rails-ujs
-//= require_tree .
 //= require materialize-sprockets
 // require materialize-form
 //= require vue
+//= require_tree .
 
 // for all materialize components
-$( document ).ready(function() {
-  M.AutoInit();
-  //$('.materialboxed').materialbox();
+$(document).ready(function(){
+  //M.AutoInit();
+
+  // materialbox
+  $('.materialboxed').materialbox();
+
+  // drop downs
+  var elems = document.querySelectorAll('.dropdown-trigger');
+  var options = {
+    coverTrigger: false
+  };
+  var instances = M.Dropdown.init(elems, options);
+
 });
 
 // for Flash fade - from pats - not my own work
