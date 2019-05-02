@@ -6,12 +6,20 @@
   <div class="card-stacked">
     <div class="card-content">
       <span class="card-title"><%= item.name %></span>
-      <p>I am a very simple card. I am good at containing small bits of information.
-      I am convenient because I require little markup to use effectively.</p>
+      <div class="row valign-wrapper">
+        <div class="col s4">
+          <p class="">Price: <%= number_to_currency item.current_price %></p>
+        </div>
+        <div class="col s4">
+          <a onclick="(function(){console.log('something is happening');x = ($.post('<%= add_cart_path(item) %>'));})()" class="btn-floating waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+        </div>
+        <div class="col s4">
+        </div>
+      </div>
+      <p><%= item.description %></p>
     </div>
     <div class="card-action">
-      <a href="#">This is a link</a>
-      <a href="#">This is a link</a>
+      <a href="<%= items_path %>"> Back to All Items</a>
     </div>
   </div>
 </div>
