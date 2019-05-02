@@ -16,6 +16,14 @@
 //= require materialize-sprockets
 //= require materialize-form
 
+// for all materialize components
+console.log('reading js...');
+$( document ).ready( function() {
+  console.log('prepping...');
+  M.AutoInit();
+  console.log('done.');
+});
+
 // for Flash fade - from pats - not my own work
 $(function() {
    $('.alert-box').fadeIn('normal', function() {

@@ -4,34 +4,22 @@
     <title>Baking Factory System</title>
     <%= csrf_meta_tags %>
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet" />
     <link rel="shortcut icon" type="image/x-icon" href="<%= image_path 'logo.png' %>" />
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <header>
-      <%# render :partial => "partials/topbar" %>
       <%= render :partial => "partials/nav" %>
     </header>
 
     <main>
-    <!--<div class="container">
-        <div class="row">
-          <div id="main_content" class="col s12">
-
-            <%# render :partial => 'partials/flash' %>
-
-            <%# yield %>
-
-          </div>
-        </div>
-    </div>-->
       <%= render :partial => 'partials/flash' %>
       <%= yield %>
     </main>

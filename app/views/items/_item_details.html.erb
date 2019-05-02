@@ -1,7 +1,7 @@
 <% item ||= @item %>
 <div class="card horizontal">
   <div class="card-image">
-    <%= render partial: 'partials/item_image', locals: { item: item} %>
+    <%= render partial: 'partials/item_image', locals: { item: item, classAttribute: 'materialboxed'} %>
   </div>
   <div class="card-stacked">
     <div class="card-content">
