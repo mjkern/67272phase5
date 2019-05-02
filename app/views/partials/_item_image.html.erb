@@ -1,0 +1,6 @@
+<% classAttribute ||= "" %>
+<% if item.photo_url.nil? %>
+  <%= image_tag 'Image Not Available.png', class: classAttribute %>
+<% else %>
+  <%= image_tag item.photo_url, class: classAttribute %>
+<% end %>
