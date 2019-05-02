@@ -14,14 +14,12 @@
 //= require rails-ujs
 //= require_tree .
 //= require materialize-sprockets
-//= require materialize-form
+// require materialize-form
 
 // for all materialize components
-console.log('reading js...');
-$( document ).ready( function() {
-  console.log('prepping...');
+$( document ).ready(function() {
   M.AutoInit();
-  console.log('done.');
+  //$('.materialboxed').materialbox();
 });
 
 // for Flash fade - from pats - not my own work
