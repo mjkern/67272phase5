@@ -15,6 +15,7 @@
 //= require_tree .
 //= require materialize-sprockets
 // require materialize-form
+//= require vue
 
 // for all materialize components
 $( document ).ready(function() {
