@@ -4,6 +4,7 @@ class CartController < ApplicationController
 
   def add()
     add_item_to_cart(params[:item_id])
+    redirect_back fallback_location: root_path
   end
 
   private

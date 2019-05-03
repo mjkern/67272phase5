@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy', as: :logout
 
   # cart
-  post 'add-to-cart/:item_id' => 'cart#add', as: :add_cart
+  get 'add-to-cart/:item_id' => 'cart#add', as: :add_cart
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home

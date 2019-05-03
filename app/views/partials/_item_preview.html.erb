@@ -2,7 +2,8 @@
   <div class="card-image">
     <%= render partial: 'partials/item_image', locals: { item: item } %>
     <!--<form><input type="submit" action="<%= add_cart_path(item) %>" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></input></form>-->
-    <a onclick="(function(){console.log('something is happening');x = ($.post('<%= add_cart_path(item) %>'));})()" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+   <!--<a onclick="(function(){console.log('something is happening');x = ($.post('<%= add_cart_path(item) %>'));})()" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>-->
+   <a href="<%= add_cart_path(item) %>" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
 	</div>
   <div class="card-content">
     <h6><%= item.name %></h6>
