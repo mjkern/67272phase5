@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def format_date(date)
+    date.strftime("%m/%d/%y")
+  end
+
   def get_address_options(user=nil)
     if user.nil? || user.role?(:admin)
       addresses = Address.active.by_recipient.to_a

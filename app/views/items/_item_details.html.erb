@@ -11,7 +11,7 @@
           <p class="">Price: <%= number_to_currency item.current_price %></p>
         </div>
         <div class="col s4">
-          <a onclick="(function(){console.log('something is happening');x = ($.post('<%= add_cart_path(item) %>'));})()" class="btn-floating waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+          <a href="<%= add_cart_path(item) %>" class="btn-floating waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
         </div>
         <div class="col s4">
         </div>
