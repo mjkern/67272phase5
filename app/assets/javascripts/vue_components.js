@@ -82,8 +82,3 @@ Vue.component('tab', {
   }
 });
 
-var vm = new Vue({
-
-  el: '#tabbed'
-
-});

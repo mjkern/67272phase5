@@ -17,9 +17,18 @@
 //= require vue
 //= require_tree .
 
-// for all materialize components
+// init everything
 $(document).ready(function(){
-  //M.AutoInit();
+
+  ////// vue //////
+  var vm = new Vue({
+
+    el: '#tabbed'
+
+  });
+
+
+  ////// materialize //////
 
   // materialbox
   $('.materialboxed').materialbox();
@@ -37,6 +46,7 @@ $(document).ready(function(){
   var instances = M.Collapsible.init(elems, options);
 
 });
+
 
 // for Flash fade - from pats - not my own work
 $(function() {

@@ -6,19 +6,22 @@
     <i class="material-icons">close</i>
   </div>
 </form>
-<tabs>
-  <tab name="about us" v-bind:selected="true">
-    <h5>The content of the About Us tab</h5>
-    <p>I love Vue.js.</p>
-  </tab>
 
-  <tab name="contact">
-    <h5>The content of the Contact tab</h5>
-    <p>I love clean, refactored code better.</p>
-  </tab>
+<div id="tabbed">
+  <tabs>
+    <tab name="about us" v-bind:selected="true">
+      <h5>The content of the About Us tab</h5>
+      <p>I love Vue.js.</p>
+    </tab>
 
-  <tab name="privacy">
-    <h5>The content of the Privacy tab</h5>
-    <p>All the more reason you'll love Vue.js.</p>
-  </tab>
-</tabs>
+    <tab name="contact">
+      <h5>The content of the Contact tab</h5>
+      <p>I love clean, refactored code better.</p>
+    </tab>
+
+    <tab name="privacy">
+      <h5>The content of the Privacy tab</h5>
+      <p>All the more reason you'll love Vue.js.</p>
+    </tab>
+  </tabs>
+</div>
