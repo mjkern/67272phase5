@@ -44,6 +44,17 @@ module AppHelpers
       total
     end
 
+    def calculate_cart_shipping_cost
+      total = 0
+      return total if session[:cart].empty? # skip if cart empty...
+      order = Order.new
+      session[:cart].each do |item_id, quantity|
+        info = {item_id: item_id, quantity: quantity, order: order}
+        order_item = OrderItem.new(info)
+      end
+      order.shipping_costs
+    end
+
     def get_list_of_items_in_cart
       order_items = Array.new
       return order_items if session[:cart].empty? # skip if cart empty...
