@@ -1,6 +1,6 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @active_addresses = Address.active.by_customer.by_recipient.paginate(:page => params[:page]).per_page(10)
     @inactive_addresses = Address.inactive.by_customer.by_recipient.paginate(:page => params[:page]).per_page(10)
@@ -18,7 +18,7 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(address_params)
-    
+
     if @address.save
       redirect_to customer_path(@address.customer), notice: "The address was added to #{@address.customer.proper_name}."
     else

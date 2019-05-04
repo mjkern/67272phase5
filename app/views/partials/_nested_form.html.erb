@@ -1,0 +1,52 @@
+<!--
+# An example of nested forms if using the "accepts_nested_attributes_for" approach
+# Context is projects and tasks, not customers and users
+# Assumes you are using simple_form and nested_form gems:
+# gem 'simple_form', '3.0.1'
+# gem 'nested_form','0.3.2'
+
+Note: this is largely taken from the example
+-->
+
+<% thing ||= @customer %>
+<%# user ||= @user %>
+<%# address ||= @address %>
+
+<%= simple_nested_form_for thing, :html => { :class => 'form-horizontal' } do |project_form| %>
+	<div class="row">
+		<div class="small-7 columns">
+			<fieldset>
+		    <legend><%= controller.action_name.capitalize %> Project</legend>
+					<%= render "fields", :f => project_form %>
+		  </fieldset>
+		</div>
+		<div class="small-5 columns">
+			<legend>Add some tasks to this project</legend>
+			<div id="project_tasks">
+
+        <%= project_form.simple_fields_for :user do |task_form| %>
+					<%= render "users/fields", :f => task_form %>
+				<% end %> <!-- end of one tasks form -->
+
+
+			</div> <!-- end of project_tasks div -->
+    </div>
+    <!--
+		<div class="small-5 columns">
+			<legend>Address</legend>
+			<div id="address_subform">
+
+        <%# project_form.simple_fields_for address do |task_form| %>
+					<%# render "addresses/fields", :f => task_form %>
+				<%# end %>
+
+
+			</div>
+    </div>
+    -->
+	</div>
+	<div class="form-actions">
+    <%= project_form.submit nil, class: 'button radius' %>
+    <%= link_to 'Cancel', customers_path, class: 'button alert radius' %>
+  </div>
+<% end %>

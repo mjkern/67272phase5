@@ -171,6 +171,7 @@ GEM
       ruby-progressbar
     multi_json (1.13.1)
     multi_test (0.1.2)
+    nested_form (0.3.2)
     nio4r (2.3.1)
     nokogiri (1.10.0)
       mini_portile2 (~> 2.4.0)
@@ -315,6 +316,7 @@ DEPENDENCIES
   meta_request (= 0.5.0)
   minitest-rails (= 3.0.0)
   minitest-reporters (= 1.1.19)
+  nested_form
   populator (= 1.0.0)
   puma (~> 3.7)
   rails (~> 5.1.6, >= 5.1.6.1)
