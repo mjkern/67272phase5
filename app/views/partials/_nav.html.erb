@@ -15,7 +15,7 @@
           <li><%= link_to 'All Products', items_path %></li>
           <li><%= link_to 'Past Orders', orders_path %></li>
           <li><%= link_to 'My Home', home_path %></li>
-          <li><a class="btn-floating btn waves-effect waves-light red"><i class="material-icons">shopping_cart</i></a></li>
+          <li><a href="<%= cart_path %>" class="btn-floating btn waves-effect waves-light red"><i class="material-icons">shopping_cart</i></a></li>
           <li><a class="btn-floating btn-flat disabled" style="margin-left: -100%;"><p class="center" style="margin-top: -0.5em; color: #000000"><%= cart_size %></p></a></li>
          <!-- Dropdown Trigger -->
          <a class='dropdown-trigger btn' href='#' data-target='userMenu' style='margin-left: -2.5em;'><%= "Welcome, #{current_user.username}" %><i class="material-icons right">arrow_drop_down</i></a>

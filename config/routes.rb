@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
   # cart
   get 'add-to-cart/:item_id' => 'cart#add', as: :add_cart
-  resources :cart, only: [:index]
+  get 'cart' => 'cart#index', as: :cart
+  #resources :cart, only: [:index]
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
