@@ -4,11 +4,11 @@ module ApplicationHelper
     date.strftime("%m/%d/%y")
   end
 
-  def get_address_options(user=nil)
+  def get_address_options(user=current_user)
     if user.nil? || user.role?(:admin)
       addresses = Address.active.by_recipient.to_a
     else
-      addresses = user.customer.addresses.by_recipient.to_a
+      addresses = current_customer.addresses.by_recipient.to_a
     end
     addresses.map{|addr| ["#{addr.recipient} : #{addr.street_1}", addr.id] }
   end

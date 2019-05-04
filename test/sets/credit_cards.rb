@@ -2,20 +2,20 @@ module Contexts
   module CreditCards
     def get_previous_month
       Date.current.month == 1 ? 12 : (Date.current.month - 1)
-    end    
-    
+    end
+
     def get_year_for_previous_month
       Date.current.month == 1 ? (Date.current.year - 1) : (Date.current.year)
     end
-    
+
     def next_year
       Date.current.year + 1
     end
-    
+
     def last_year
       Date.current.year - 1
     end
-    
+
     def create_valid_cards
       # Create some valid cards (two for each type)
       @visa13        = CreditCard.new(4123456789012, next_year, 12)
@@ -30,7 +30,7 @@ module Contexts
       @amex37        = CreditCard.new(371234567890123, next_year, 12)
       @current_month = CreditCard.new(371234567890123, Date.current.year, Date.current.month)
     end
-    
+
     def create_invalid_card_lengths
       # Create some invalid card number lengths (two for each type)
       @bad_visa_digits_minus  = CreditCard.new(412345678901, next_year, 12)
@@ -45,7 +45,7 @@ module Contexts
       @bad_amex_digits_minus  = CreditCard.new(34123456789012, next_year, 12)
       @bad_amex_digits_plus   = CreditCard.new(3712345678901234, next_year, 12)
     end
-    
+
     def create_invalid_card_prefixes
       @bad_prefix_visa  = CreditCard.new(1123456789012345, next_year, 12)
       @bad_prefix_mc    = CreditCard.new(5623456789012345, next_year, 12)
@@ -54,11 +54,11 @@ module Contexts
       @bad_prefix_dccb  = CreditCard.new(30612345678901, next_year, 12)
       @bad_prefix_amex  = CreditCard.new(351234567890123, next_year, 12)
     end
-    
+
     def create_invalid_card_dates
       @last_year  = CreditCard.new(4123456789012345, last_year, 12)
       @last_month = CreditCard.new(4123456789012345, get_year_for_previous_month, get_previous_month)
     end
-    
+
   end
 end

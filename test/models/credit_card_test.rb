@@ -65,5 +65,5 @@ class CreditCardTest < ActiveSupport::TestCase
     deny @last_year.valid?
     deny @last_month.valid?
   end
-    
+
 end

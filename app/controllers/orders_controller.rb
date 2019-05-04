@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:destroy, :index]
 
+  # for authoriization
+  before_action :check_login
+  authorize_resource
+
   def index
     orders = Order.chronological
     if @order
@@ -25,6 +29,10 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.date = Date.current
+    @order.customer ||= current_customer
+    @order.expiration_year = @order.expiration_year.to_i
+    @order.expiration_month = @order.expiration_month.to_i
+    @order.save!
     if @order.save
       @order.pay
       redirect_to @order, notice: "Thank you for ordering from the Baking Factory."
@@ -44,7 +52,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:address_id, :customer_id, :grand_total)
+    params.require(:order).permit(:address_id, :customer_id, :expiration_month, :expiration_year, :credit_card_number)
   end
 
 end
