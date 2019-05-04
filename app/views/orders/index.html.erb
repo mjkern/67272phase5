@@ -1,4 +1,5 @@
-<%= render partial: "partials/index_structure", locals: {model_name: "order", 
-                                                         primary: "all_orders", 
-                                                         secondary: nil,
-                                                         sidebar: nil} %>
+<div class="container">
+  <h4>Order History</h4>
+  <%= render partial: "partials/orders_list", locals: { orders: @all_orders } %>
+</div>
+

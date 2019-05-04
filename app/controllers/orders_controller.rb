@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :destroy]
-  
+
   def index
     @all_orders = Order.chronological.paginate(:page => params[:page]).per_page(10)
   end
@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
       render action: 'new'
     end
   end
-  
+
 
   private
   def set_order

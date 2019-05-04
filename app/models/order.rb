@@ -103,7 +103,7 @@ class Order < ApplicationRecord
   end
 
   def expiration_date_is_valid
-    return false if self.credit_card_number.nil? 
+    return false if self.credit_card_number.nil?
     if self.expiration_year.nil? || self.expiration_month.nil? || credit_card.expired?
       errors.add(:expiration_year, "is expired")
       return false
