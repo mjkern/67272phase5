@@ -18,6 +18,8 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @months = (1..12).map {|n| [n.to_s, n]}
+    @years = (0..5).map {|y| [y.years.from_now.year.to_s, y.years.from_now.year]}
   end
 
   def create

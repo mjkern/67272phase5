@@ -42,8 +42,13 @@ $(document).ready(function(){
 
   // collabsible
   var elems = document.querySelectorAll('.collapsible');
-  var options = {}
+  var options = {};
   var instances = M.Collapsible.init(elems, options);
+
+  // select
+  var elems = document.querySelectorAll('select');
+  var options = {};
+  var instances = M.FormSelect.init(elems, options);
 
   ////// hacky fixes //////
 
