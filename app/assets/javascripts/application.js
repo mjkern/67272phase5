@@ -45,6 +45,19 @@ $(document).ready(function(){
   var options = {}
   var instances = M.Collapsible.init(elems, options);
 
+  ////// hacky fixes //////
+
+  // for orders index
+  $('.pagination a').each(function(a,b){
+    console.log("running");
+    if (b.href.match(/\/orders\//)){
+      s = b.href.split("?");
+      front = s[0].split("/");
+      front.pop();
+      b.href = [front.join("/"), s[1]].join("?");
+    }
+  });
+
 });
 
 

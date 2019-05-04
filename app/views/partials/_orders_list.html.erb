@@ -1,10 +1,9 @@
 <% orders ||= Order.chronological %>
 <% selected ||= @order %>
 <% if defined?(first_active) then first = first_active else first = false end %>
-<p><%= selected.address.recipient %></p>
 <ul class="collapsible">
   <% for order in orders %>
-    <li<%= order.id == selected.id ? " class=active" : '' %>>
+    <li<%= order == selected ? " class=active" : '' %>>
       <div class="collapsible-header row valign-wrapper" style="margin-bottom: 0;">
         <div class="col s2"><h6><%= format_date order.date %></h6></div>
         <div class="col s8"><%= render partial: 'partials/address_one_line', locals: { address: order.address } %></div>
