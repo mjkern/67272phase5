@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   # Routes for main resources
   resources :addresses
   resources :customers
-  resources :orders
+  resources :orders, only: [:index, :create, :edit, :new]
+  patch 'orders/id', to: 'orders#update' # seems to conflict with the :order shortcut...
+  get 'orders/:id', to: 'orders#index', as: :order # non-conventional
   resources :items
+  #get 'items', to: 'items#index', as: :items
+  #get 'items/:id', to: 'items#index', as: :item
   resources :users
 
   # Logging in and out
