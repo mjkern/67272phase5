@@ -28,7 +28,7 @@ class AddressesController < ApplicationController
 
   def update
     if @address.update(address_params)
-      redirect_to addresses_path, notice: "The address was revised in the system."
+      redirect_to customer_path(@address.customer), notice: "The address was revised in the system."
     else
       render action: 'edit'
     end
