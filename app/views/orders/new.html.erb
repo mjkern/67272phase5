@@ -11,6 +11,7 @@
         <div class="collapsible-body">
           <div class="row">
             <div class="col s12">
+              <!--
               <% for option in get_address_options %>
                 <p>
                   <label>
@@ -19,7 +20,8 @@
                   </label>
                 </p>
               <% end %>
-              <%# f.input :address_id, collection: get_address_options, as: :radio_buttons %>
+              -->
+              <%= f.input :address_id, collection: get_address_options, as: :select %>
             </div>
           </div>
 

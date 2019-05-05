@@ -1,7 +1,10 @@
 class OrdersController < ApplicationController
+  # for cart functionality
+  include AppHelpers::Cart
+
   before_action :set_order, only: [:destroy, :index]
 
-  # for authoriization
+  # for authorization
   before_action :check_login
   authorize_resource
 
@@ -32,10 +35,13 @@ class OrdersController < ApplicationController
     @order.customer ||= current_customer
     @order.expiration_year = @order.expiration_year.to_i
     @order.expiration_month = @order.expiration_month.to_i
-    @order.save!
+    @order.grand_total = calculate_cart_items_cost + calculate_cart_shipping_cost
     if @order.save
       @order.pay
-      redirect_to @order, notice: "Thank you for ordering from the Baking Factory."
+      @order.reload
+      save_each_item_in_cart(@order)
+      clear_cart
+      redirect_to home_path, notice: "Thank you for ordering from the Baking Factory."
     else
       render action: 'new'
     end
