@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs subtabs" id="<%= "#{name}-tabs" %>">
+      <li class="tab col s6"><a class="active" href="<%= "##{name}-active-tab" %>">Active</a></li>
+      <li class="tab col s6"><a href="<%= "##{name}-inactive-tab" %>">Inactive</a></li>
+    </ul>
+  </div>
+  <div id="<%= "#{name}-active-tab" %>" class="col s12">
+    <%= render partial: 'list', locals: { users: active_users } %>
+  </div>
+  <div id="<%= "#{name}-inactive-tab" %>" class="col s12">
+    <%= render partial: 'list', locals: { users: inactive_users } %>
+  </div>
+</div>

@@ -2,6 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
+    @active_admin = User.active.where('role = "admin"').alphabetical
+    @active_bakers = User.active.where('role = "baker"').alphabetical
+    @active_shippers = User.active.where('role = "shipper"').alphabetical
+    @inactive_admin = User.inactive.where('role = "admin"').alphabetical
+    @inactive_bakers = User.inactive.where('role = "baker"').alphabetical
+    @inactive_shippers = User.inactive.where('role = "shipper"').alphabetical
   end
 
   def show

@@ -65,6 +65,12 @@ $(document).ready(function(){
   var options = {};
   var instances = M.FormSelect.init(elems, options);
 
+  // subtabs
+  // select
+  var elems = document.querySelectorAll('.subtabs');
+  var options = {};
+  var instances = M.Tabs.init(elems, options);
+
   ////// hacky fixes //////
 
   // for orders index

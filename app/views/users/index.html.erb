@@ -1,0 +1,16 @@
+<div class="container">
+  <h4>Manage Employees</h4>
+  <div id="tabbed">
+    <tabs>
+      <tab name="Admin" v-bind:selected="true">
+        <%= render partial: 'subtabs', locals: { name: "admin", active_users: @active_admin, inactive_users: @inactive_admin } %>
+      </tab>
+      <tab name="Bakers">
+        <%= render partial: 'subtabs', locals: { name: "bakers", active_users: @active_bakers, inactive_users: @inactive_bakers } %>
+      </tab>
+      <tab name="Shippers">
+        <%= render partial: 'subtabs', locals: { name: "shippers", active_users: @active_shippers, inactive_users: @inactive_shippers } %>
+      </tab>
+    </tabs>
+  <div>
+</div>
