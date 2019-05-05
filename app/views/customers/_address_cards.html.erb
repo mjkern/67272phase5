@@ -5,11 +5,11 @@
       <div class="col s6">
         <%= render partial: 'partials/address_details_card', locals: {address: customer.billing_address, highlight: true} %>
       </div>
-      <div class="col s6">
-        <% for address in (customer.addresses.by_recipient - [customer.billing_address]) %>
+      <% for address in (customer.addresses.by_recipient - [customer.billing_address]) %>
+        <div class="col s6">
           <%= render partial: 'partials/address_details_card', locals: {address: address, highlight: false} %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="card-action">
