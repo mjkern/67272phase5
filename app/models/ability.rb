@@ -31,6 +31,7 @@ class Ability
 
     if user.role?(:admin)
       can :manage, :all
+      can :toggle, orderitem
     elsif user.role?(:customer)
       can :read, Item
       can :show, user
@@ -53,6 +54,7 @@ class Ability
       can :read, Item
       can :read, Order
       can :show, Address
+      can :toggle, orderitem
     else
       #can :show, Item
       #can :index, Item

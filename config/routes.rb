@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   resources :addresses
   resources :customers
   resources :orders, only: [:index, :create, :edit, :new]
-  patch 'orders/id', to: 'orders#update' # seems to conflict with the :order shortcut...
+  patch 'orders/:id', to: 'orders#update' # seems to conflict with the :order shortcut...
   get 'orders/:id', to: 'orders#index', as: :order # non-conventional
   resources :items
   #get 'items', to: 'items#index', as: :items
   #get 'items/:id', to: 'items#index', as: :item
   resources :users
+
+  # Toggling and order item
+  get 'toggle/:id', to: 'order_items#toggle', as: :toggle
 
   # Logging in and out
   resources :sessions

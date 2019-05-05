@@ -81,4 +81,21 @@ Vue.component('tab', {
 
   }
 });
+/*
+Vue.component('togglers') {
 
+
+Vue.component('toggle', {
+  template: `
+    <p>
+      <label>
+        <input type="checkbox" />
+        <span>Red</span>
+      </label>
+    </p>
+  `,
+  props: {
+    oiid: {require: true},
+    shipped: {require: true}
+  }
+});*/

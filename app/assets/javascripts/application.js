@@ -16,16 +16,30 @@
 // require materialize-form
 //= require vue
 //= require_tree .
+// require best_in_place
+
+function toggleShipped(url) {
+  return function() {
+    console.log("toggleing order item " + url);
+    $.ajax({
+      url: url
+    });
+  }
+}
 
 // init everything
 $(document).ready(function(){
 
   ////// vue //////
   var vm = new Vue({
-
     el: '#tabbed'
-
   });
+
+  /*
+  var toggles = new Vue({
+    el: '.toggle'
+  });
+  */
 
 
   ////// materialize //////

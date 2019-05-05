@@ -2,46 +2,53 @@
   <h6>Nothing to ship right now</h6>
 <% else %>
   <ul class="collapsible">
-    <% for order in orders %>
-      <% ois = order.order_items %>
-      <li>
-        <div class="collapsible-header row valign-wrapper" style="margin-bottom: 0;">
-          <div class="col s3 left">
-            <h6><%= "#00#{order.id}" %></h6>
-          </div>
-          <div class="col s6">
-            <%= render partial: 'partials/address_one_line', locals: { address: order.address } %>
-          </div>
-          <div class="col s3">
-            <span class="right"><%= "#{ois.count - order.unshipped_items.count}/#{ois.count} shipped" %></span>
-          </div>
-        </div>
-        <div class="collapsible-body">
-          <div class="row">
-            <div class="col s2"><h6>Ship To:</h6></div>
-            <div class="col s6">
-              <%= render partial: 'partials/address_card', locals: {address: order.address} %>
+        <% for order in orders %>
+          <% ois = order.order_items %>
+          <li>
+            <div class="collapsible-header row valign-wrapper" style="margin-bottom: 0;">
+              <div class="col s3 left">
+                <h6><%= "#00#{order.id}" %></h6>
+              </div>
+              <div class="col s6">
+                <%= render partial: 'partials/address_one_line', locals: { address: order.address } %>
+              </div>
+              <div class="col s3">
+                <span class="right"><%= "#{ois.count - order.unshipped_items.count}/#{ois.count} shipped" %></span>
+              </div>
             </div>
-            <div class="col s4">
+            <div class="collapsible-body">
+              <div class="row">
+                <div class="col s2"><h6>Ship To:</h6></div>
+                <div class="col s6">
+                  <%= render partial: 'partials/address_card', locals: {address: order.address} %>
+                </div>
+                <div class="col s4">
+                </div>
+              </div>
+              <table class="highlight">
+                <thead>
+                  <th>Item</th>
+                  <th>Quantity</th>
+                  <th>Shipped?</th>
+                </thead>
+                <% for oi in ois %>
+                  <% item = oi.item %>
+                  <tr>
+                    <td><%= item.name %></td>
+                    <td><%= oi.quantity %></td>
+                    <td>
+											<p>
+												<label>
+                          <input type="checkbox" onclick='toggleShipped("<%= "#{toggle_path(oi)}" %>")();' />
+													<span></span>
+												</label>
+											</p>
+                    </td>
+                  </tr>
+                <% end %>
+              </table>
             </div>
-          </div>
-          <table class="highlight">
-            <thead>
-              <th>Item</th>
-              <th>Quantity</th>
-              <th>Shipped?</th>
-            </thead>
-            <% for oi in ois %>
-              <% item = oi.item %>
-              <tr>
-                <td><%= item.name %></td>
-                <td><%= oi.quantity %></td>
-                <td></td>
-              </tr>
-            <% end %>
-          </table>
-        </div>
-      </li>
-    <% end %>
+          </li>
+        <% end %>
   </ul>
 <% end %>
