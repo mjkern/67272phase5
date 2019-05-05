@@ -8,7 +8,7 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @previous_orders = @customer.orders.chronological
+    #@previous_orders = @customer.orders.chronological
   end
 
   def new

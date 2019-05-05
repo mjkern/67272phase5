@@ -29,8 +29,8 @@ module ApplicationHelper
     end
   end
 
-  def get_recent_orders(count=7)
-    if current_customer
+  def get_recent_orders(customer=current_customer, count=7)
+    if customer
       Order.chronological.where("customer_id = ?", current_customer.id).limit(count)
     else
       nil
