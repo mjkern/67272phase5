@@ -1,13 +1,22 @@
 <div class="card">
   <div class="card-image">
     <%= render partial: 'partials/item_image', locals: { item: item } %>
-   <a href="<%= add_cart_path(item) %>" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+    <% if current_user.role?(:customer) %>
+      <a href="<%= add_cart_path(item) %>" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+    <% elsif current_user.role?(:admin) %>
+      <a href="<%= edit_item_path(item) %>" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">edit</i></a>
+    <% end %>
 	</div>
   <div class="card-content">
-    <h6><%= item.name %></h6>
+    <h6><%= link_to item.name, item_path(item) %></h6>
     <p><%= number_to_currency item.current_price %></p>
   </div>
+  <!--
   <div class="card-action">
     <a href="<%= item_path(item) %>" class="waves-effect waves-light btn-small">View<i class="material-icons right">visibility</i></a>
-  </div>
+    <% if current_user.role?(:admin) %>
+      <a href="<%= edit_item_path(item) %>" class="waves-effect waves-light btn-small">Edit</a>
+    <% end %>
+    </div>
+  -->
 </div>

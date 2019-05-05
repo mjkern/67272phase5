@@ -50,7 +50,8 @@ $(document).ready(function(){
   // drop downs
   var elems = document.querySelectorAll('.dropdown-trigger');
   var options = {
-    coverTrigger: false
+    coverTrigger: false,
+    hover: true
   };
   var instances = M.Dropdown.init(elems, options);
 

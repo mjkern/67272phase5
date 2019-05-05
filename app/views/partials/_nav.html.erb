@@ -8,9 +8,30 @@
     <ul class="right valign-wrapper">
       <% if logged_in? %>
         <% if current_user.role?(:admin) %>
-          <li><%= link_to 'Customers', customers_path %></li>
-          <li><%= link_to 'Addresses', addresses_path %></li>
-          <li><%= link_to 'Orders', orders_path %></li>
+          <li><%= link_to 'Dashboard', home_path %></li>
+
+          <a class='dropdown-trigger btn' href='#' data-target='operationsMenu'>
+            Operations
+            <i class="material-icons right">arrow_drop_down</i>
+          </a>
+          <ul id='operationsMenu' class='dropdown-content'>
+            <li><%= link_to 'Baking', '#' %></li>
+            <li><%= link_to 'Shipping', '#' %></li>
+          </ul>
+
+          <a class='dropdown-trigger btn' href='#' data-target='manageMenu'>
+            Manage
+            <i class="material-icons right">arrow_drop_down</i>
+          </a>
+          <ul id='manageMenu' class='dropdown-content'>
+            <li><%= link_to 'Products', items_path %></li>
+            <li><%= link_to 'Employees', users_path %></li>
+            <li><%= link_to 'Customers', customers_path %></li>
+          </ul>
+
+          <a class='dropdown-trigger btn' href='#' data-target='userMenu'><%= "Welcome, #{current_user.username}" %>
+            <i class="material-icons right">arrow_drop_down</i>
+          </a>
         <% elsif current_user.role?(:customer) %>
           <li><%= link_to 'All Products', items_path %></li>
           <li><%= link_to 'Past Orders', orders_path %></li>
@@ -18,17 +39,18 @@
           <li><a href="<%= cart_path %>" class="btn-floating btn waves-effect waves-light red"><i class="material-icons">shopping_cart</i></a></li>
           <li><a class="btn-floating btn-flat disabled" style="margin-left: -100%;"><p class="center" style="margin-top: -0.5em; color: #000000"><%= cart_size %></p></a></li>
          <!-- Dropdown Trigger -->
-         <a class='dropdown-trigger btn' href='#' data-target='userMenu' style='margin-left: -2.5em;'><%= "Welcome, #{current_user.username}" %><i class="material-icons right">arrow_drop_down</i></a>
+         <a class='dropdown-trigger btn' href='#' data-target='userMenu' style='margin-left: -2.5em;'><%= "Welcome, #{current_customer.first_name}" %><i class="material-icons right">arrow_drop_down</i></a>
 
-        <!-- Dropdown Structure -->
-          <ul id='userMenu' class='dropdown-content'>
-            <li><%= link_to 'My Account', user_path(current_user) %></li>
-            <li><%= link_to 'Manage Addresses', addresses_path %></li>
-            <li><%= link_to 'Logout', logout_path %></li>
-          </ul>
         <% end %>
-        <li><%= link_to 'Logout', logout_path, class: "waves-effect waves-light btn" %></li>
+        <!--<li><%#= link_to 'Logout', logout_path, class: "waves-effect waves-light btn" %></li>-->
+        <!-- Dropdown Structure -->
+        <ul id='userMenu' class='dropdown-content'>
+          <li><%= link_to 'My Account', user_path(current_user) %></li>
+          <!--<li><%#= link_to 'Manage Addresses', addresses_path %></li>-->
+          <li><%= link_to 'Logout', logout_path %></li>
+        </ul>
       <% else %>
+        <li><%= link_to 'Sign Up', new_customer_path, class: "waves-effect waves-light btn" %></li>
         <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn" %></li>
       <% end %>
     </ul>
