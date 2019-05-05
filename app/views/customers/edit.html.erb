@@ -1,3 +1,14 @@
-<%= render partial: "partials/form_structure", locals: {object: @customer, 
+
+<%= render partial: 'partials/form_template',
+  locals: {
+    parital: 'form',
+    title: "Edit #{@customer.proper_name}",
+    locals: {
+      editing: true
+    }
+  }
+%>
+
+<%# render partial: "partials/form_structure", locals: {object: @customer,
                                                         type_of_form: "Edit Customer",
                                                         fields: "fields"} %>
