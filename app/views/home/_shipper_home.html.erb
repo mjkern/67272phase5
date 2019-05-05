@@ -1,6 +1,7 @@
 <div class="container">
   <h4>Orders to Ship</h4>
-  <%= render partial: 'shipping_list', locals: {orders: Order.not_shipped} %>
+  <%= render partial: 'shipping_list', locals: {orders: @orders} %>
+  <%= will_paginate @orders, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
   <!--
   <div id="tabbed">
     <tabs>

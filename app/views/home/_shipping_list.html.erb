@@ -16,7 +16,32 @@
             <span class="right"><%= "#{ois.count - order.unshipped_items.count}/#{ois.count} shipped" %></span>
           </div>
         </div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        <div class="collapsible-body">
+          <div class="row">
+            <div class="col s2"><h6>Ship To:</h6></div>
+            <div class="col s6">
+              <%= render partial: 'partials/address_card', locals: {address: order.address} %>
+            </div>
+            <div class="col s4">
+            </div>
+          </div>
+          <table class="highlight">
+            <thead>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Shipped?</th>
+            </thead>
+            <% for oi in ois %>
+              <% item = oi.item %>
+              <tr>
+                <td><%= item.name %></td>
+                <td><%= oi.quantity %></td>
+                <td></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
       </li>
     <% end %>
+  </ul>
 <% end %>

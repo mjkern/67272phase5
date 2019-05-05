@@ -1,0 +1,8 @@
+<div class="card-panel">
+  <%= address.recipient %><br/>
+  <%= address.street_1 %><br/>
+  <% if address.street_2 and not address.street_2.chomp.empty? %>
+    <%= address.street_2 %><br/>
+  <% end %>
+  <%= "#{address.city}, #{address.state} #{address.zip}" %>
+</div>
