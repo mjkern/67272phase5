@@ -1,0 +1,22 @@
+<% if !orders || orders.count == 0 %>
+  <h6>Nothing to ship right now</h6>
+<% else %>
+  <ul class="collapsible">
+    <% for order in orders %>
+      <% ois = order.order_items %>
+      <li>
+        <div class="collapsible-header row valign-wrapper" style="margin-bottom: 0;">
+          <div class="col s3 left">
+            <h6><%= "#00#{order.id}" %></h6>
+          </div>
+          <div class="col s6">
+            <%= render partial: 'partials/address_one_line', locals: { address: order.address } %>
+          </div>
+          <div class="col s3">
+            <span class="right"><%= "#{ois.count - order.unshipped_items.count}/#{ois.count} shipped" %></span>
+          </div>
+        </div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+    <% end %>
+<% end %>

@@ -1,1 +1,21 @@
-<h4>Shipper Home</h4>
+<div class="container">
+  <h4>Orders to Ship</h4>
+  <%= render partial: 'shipping_list', locals: {orders: Order.not_shipped} %>
+  <!--
+  <div id="tabbed">
+    <tabs>
+      <tab name="All" v-bind:selected="true">
+        <%#= render partial: 'shipping_list', locals: { orders: Order.not_shipped } %>
+      </tab>
+
+      <tab name="Bread">
+        <%#= render partial: 'shipping_list', locals: { orders: Order.all.to_a - Order.not_shipped.to_a } %>
+      </tab>
+
+      <tab name="Muffins">
+        <%#= render partial: 'shipping_list', locals: { orders: Order.all } %>
+      </tab>
+    </tabs>
+    </div>
+  -->
+</div>
