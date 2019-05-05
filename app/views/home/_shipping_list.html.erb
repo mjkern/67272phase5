@@ -39,7 +39,7 @@
                     <td>
 											<p>
 												<label>
-                          <input type="checkbox" onclick='toggleShipped("<%= "#{toggle_path(oi)}" %>")();' />
+                          <input type="checkbox" <%= if oi.shipped_on? then 'checked="checked"' end %> onclick='toggleShipped("<%= "#{toggle_path(oi)}" %>")();' />
 													<span></span>
 												</label>
 											</p>
