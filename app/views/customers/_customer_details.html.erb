@@ -1,12 +1,22 @@
-<h3><%= @customer.proper_name %></h3>
-<p>
-  <b>Phone</b>: <%= number_to_phone @customer.phone %>
-</p>
+<div class="card">
+  <div class="card-content">
+    <span class="card-title"><%= @customer.proper_name %></span>
+    <p>
+      <b>Phone</b>: <%= number_to_phone @customer.phone %>
+    </p>
 
-<p>
-  <b>Email</b>: <%= mail_to @customer.email, @customer.email, encode: "javascript" %>
-</p>
+    <p>
+      <b>Email</b>: <%= mail_to @customer.email, @customer.email, encode: "javascript" %>
+    </p>
 
-<p>
-  <b>Active</b>: <%= @customer.active ? 'Yes' : 'No' %>
-</p>
+    <p>
+      <b>Active</b>: <%= @customer.active ? 'Yes' : 'No' %>
+    </p>
+  </div>
+  <% if can? :edit, @customer %>
+    <div class="card-action">
+      <%= link_to 'Edit', edit_customer_path(@customer) %>
+    </div>
+  <% end %>
+</div>
+
