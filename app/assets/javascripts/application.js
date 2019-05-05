@@ -69,7 +69,6 @@ $(document).ready(function(){
 
   // for orders index
   $('.pagination a').each(function(a,b){
-    console.log("running");
     if (b.href.match(/\/orders\//)){
       s = b.href.split("?");
       front = s[0].split("/");

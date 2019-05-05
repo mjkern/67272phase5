@@ -1,0 +1,22 @@
+<% if !customers || customers.count == 0 %>
+  <h6><%= error %></h6>
+<% else %>
+  <table class="highlight">
+    <thead>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <!--<th>Address</th>-->
+    </thead>
+    <% for customer in customers %>
+      <tr>
+        <td><%= link_to customer.name, customer_path(customer) %></td>
+        <td><%= number_to_phone customer.phone %></td>
+        <td><%= mail_to customer.email, customer.email, encode: "javascript" %></td>
+        <!--<td><%# render partial: 'address_one_line', locals: { address: customer.billing_address } %></td>-->
+      <tr>
+    <% end %>
+  </table>
+  <%= will_paginate customers, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<% end %>
+

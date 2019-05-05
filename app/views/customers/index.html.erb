@@ -1,4 +1,26 @@
-<%= render partial: "partials/index_structure", locals: {model_name: "customer",
+<%# render partial: "partials/index_structure", locals: {model_name: "customer",
                                                          primary: "active_customers",
                                                          secondary: nil,
                                                          sidebar: "inactive_customers"} %>
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <h4>Mangage Customers</h4>
+      <div id="tabbed">
+        <tabs>
+          <tab name="Active" v-bind:selected="true">
+            <%= render partial: 'list', locals: {customers: @active_customers, error: "There are no active customers right now"} %>
+          </tab>
+          <tab name="Inactive">
+            <%= render partial: 'list', locals: {customers: @inactive_customers, error: "There are no inactive customers right now"} %>
+          </tab>
+        </tabs>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <a href="<%= new_customer_path %>" class="waves-effect waves-light btn">Add Customer</a>
+    </div>
+  </div>
+</div>
