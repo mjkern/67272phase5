@@ -10,7 +10,7 @@
         <% first = true %>
         <% for order in orders %>
           <li<%= first ? " class=active" : '' %>>
-            <div class="collapsible-header"><%= format_date order.date %></div>
+            <div class="collapsible-header"><%= link_to (format_date order.date), order_path(order) %></div>
             <div class="collapsible-body">
               <ul class="collection">
                 <% for item in order.items %>
