@@ -1,5 +1,11 @@
+
+<%= render partial: "partials/form_template", locals: {
+  title: "Create Account",
+  locals: {
+    editing: false,
+  }} %>
+
 <%# render partial: "partials/form_structure", locals: {object: @customer,
                                                         type_of_form: "New Customer",
                                                         fields: "fields"} %>
 
-<%= render partial: "partials/form_layout", locals: { partial: "form" } %>

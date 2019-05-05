@@ -16,18 +16,16 @@ class UsersController < ApplicationController
   def edit
   end
 
+  # junk
   def create
-    @customer = Customer.new(customer_params)
-    p @customer.user
     if @customer.save
-      puts "it worked"
       redirect_to addresses_new_path, notice: "#{@customer.proper_name} was added to the system."
     else
       puts "it did not work..."
-      render action: 'new'
     end
   end
 
+  #junk
   def update
     if @customer.update(customer_params)
       redirect_to @customer, notice: "#{@customer.proper_name} was revised in the system."

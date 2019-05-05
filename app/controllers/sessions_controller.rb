@@ -9,9 +9,8 @@ class SessionsController < ApplicationController
 	def create
     user = User.authenticate(params[:username], params[:password])
     if user
-			session[:user_id] = user.id
+      session[:user_id] = user.id
       create_cart
-      add_item_to_cart(5)
 			redirect_to home_path, notice: "Logged in!"
 		else
 			flash.now.alert = "Username or password is invalid"
@@ -21,6 +20,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		session[:user_id] = nil
+    logout
     destroy_cart
 		redirect_to home_path, notice: "Logged out!"
 	end

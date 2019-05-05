@@ -22,4 +22,15 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_customer
 
+  def logout
+    @current_customer = nil
+    @current_user = nil
+    session[:user_id] = nil
+  end
+
+  def login(user)
+    session[:user_id] = user.id
+    create_cart
+  end
+
 end

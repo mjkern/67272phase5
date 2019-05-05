@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  include AppHelpers::Cart
   include ActionView::Helpers::NumberHelper
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
@@ -42,14 +43,21 @@ class CustomersController < ApplicationController
     @address = Address.new(customer_params[:address])
     """
     @customer = Customer.new(customer_params)
-    p @customer.user
+    if !(logged_in? and current_user.role?(:admin))
+      @customer.active = true
+      @customer.user.active = true
+      @customer.user.role = 'customer'
+    end
+
     if @customer.save
-      puts "it worked"
-      redirect_to addresses_new_path, notice: "#{@customer.proper_name} was added to the system."
+      if !logged_in?
+        login(@customer.user)
+      end
+      redirect_to new_address_path, notice: "#{@customer.proper_name} was added to the system. Now please create a billing address."
     else
-      puts "it did not work..."
       render action: 'new'
     end
+
   end
 
   def update

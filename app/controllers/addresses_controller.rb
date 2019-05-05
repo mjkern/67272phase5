@@ -22,7 +22,9 @@ class AddressesController < ApplicationController
       @address.customer = current_customer
       @address.active = true
     end
-
+    if @address.customer.addresses.count == 0
+      @address.is_billing = true
+    end
     if @address.save
       redirect_to customer_path(@address.customer), notice: "The address was added to #{@address.customer.proper_name}."
     else

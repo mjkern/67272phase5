@@ -1,6 +1,8 @@
     <%= f.input :username, input_html: {class: "avg"} %>
     <%= f.input :password, input_html: {class: "avg"} %>
     <%= f.input :password_confirmation, input_html: {class: "avg"} %>
-    <%= f.input :role, input_html: {class: "avg"} %>
     <%# f.input :email, input_html: {class: "avg"} %>
-    <%= f.input :active %>
+    <% if logged_in? and current_user.role?(:admin) %>
+      <%= f.input :role, input_html: {class: "avg"} %>
+      <%= f.input :active %>
+    <% end %>
