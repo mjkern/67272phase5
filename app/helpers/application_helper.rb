@@ -46,4 +46,16 @@ module ApplicationHelper
       0
     end
   end
+
+  def get_baking_list(category=nil)
+    if category
+      OrderItem.unshipped.joins(:item).where("items.category LIKE ?", category).group("order_items.item_id").select("order_items.id, SUM(quantity) AS count")
+        .map {|r| [OrderItem.where(id: r.id).first.item, r.count]}
+        .sort {|a, b| a[0].name <=> b[0].name}
+    else
+      OrderItem.unshipped.group("order_items.item_id").select("order_items.id, SUM(quantity) AS count")
+        .map {|r| [OrderItem.where(id: r.id).first.item, r.count]}
+        .sort {|a, b| a[0].name <=> b[0].name}
+    end
+  end
 end

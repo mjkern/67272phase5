@@ -1,0 +1,16 @@
+<% if !items || items.count == 0 %>
+  <h6>Nothing to bake right now...</h6>
+<% else %>
+  <table class="highlight">
+    <thead>
+      <th>Item</th>
+      <th>Count</th>
+    </thead>
+    <% for (item, count) in items %>
+      <tr>
+        <td><%= link_to item.name, item_path(item) %></td>
+        <td><%= count %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

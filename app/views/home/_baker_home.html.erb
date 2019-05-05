@@ -1,1 +1,22 @@
-<h4>Bakers all start here</h4>
+<div class="container">
+  <h4>Items to Bake</h4>
+  <div id="tabbed">
+		<tabs>
+			<tab name="All" v-bind:selected="true">
+        <%= render partial: 'baking_table', locals: {items: get_baking_list} %>
+			</tab>
+
+			<tab name="Bread">
+        <%= render partial: 'baking_table', locals: { items: get_baking_list("bread") }%>
+			</tab>
+
+			<tab name="Muffins">
+				<%= render partial: 'baking_table', locals: { items: get_baking_list("muffins") } %>
+			</tab>
+
+			<tab name="Pastries">
+				<%= render partial: 'baking_table', locals: { items: get_baking_list("pastries") } %>
+			</tab>
+		</tabs>
+  </div>
+</div>
