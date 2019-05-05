@@ -1,13 +1,13 @@
-<div class="card<% if ((defined? highlight) and highlight then ' teal' end %>">
+<div class="card<%= if ((defined? highlight) and highlight) then ' teal' end %>">
   <div class="card-content">
-    <%= "#{address.recipient}#{if address.is_billing then ' (Billing Address)' end}" %><br/>
+    <b><%= "#{address.recipient}#{if address.is_billing then ' (Billing Address)' end}" %></b><br/>
     <%= address.street_1 %><br/>
     <% if address.street_2 and not address.street_2.chomp.empty? %>
       <%= address.street_2 %><br/>
     <% end %>
     <%= "#{address.city}, #{address.state} #{address.zip}" %>
   </div>
-  <div class="card-actions">
+  <div class="card-action">
     <%= link_to "Edit", edit_address_path %>
   </div>
 </div>
