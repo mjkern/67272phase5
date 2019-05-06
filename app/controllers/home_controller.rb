@@ -10,6 +10,8 @@ class HomeController < ApplicationController
       elsif current_user.role?(:baker)
         redirect_to baking_path
       end
+    else
+      redirect_to items_path
     end
   end
 

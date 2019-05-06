@@ -61,6 +61,7 @@
           <li><%= link_to 'Logout', logout_path %></li>
         </ul>
       <% else %>
+        <li><%= link_to 'All Products', items_path %></li>
         <li><%= link_to 'Sign Up', new_customer_path, class: "waves-effect waves-light btn" %></li>
         <li><%= link_to 'Login', login_path, class: "waves-effect waves-light btn" %></li>
       <% end %>
