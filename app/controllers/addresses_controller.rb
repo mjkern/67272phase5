@@ -2,8 +2,8 @@ class AddressesController < ApplicationController
   before_action :set_address, only: [:show, :edit, :update, :destroy]
 
   # for authorization
-  before_action :check_login
-  authorize_resource
+  #before_action :check_login
+  #authorize_resource
 
 
   def index
@@ -45,6 +45,13 @@ class AddressesController < ApplicationController
     end
   end
 
+  def destroy
+    if @address.destroy
+      redirect_back fallback_location: customer_path(@address.customer), notice: "Address deleted"
+    else
+      redirect_back fallback_location: customer_path(@address.customer), notice: "Address could not be deleted"
+    end
+  end
 
   private
   def set_address

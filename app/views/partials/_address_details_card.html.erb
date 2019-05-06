@@ -7,7 +7,12 @@
     <% end %>
     <%= "#{address.city}, #{address.state} #{address.zip}" %>
   </div>
-  <div class="card-action">
+  <div class="card-action valign-wrapper">
     <%= link_to "Edit", edit_address_path(address) %>
+    <% if current_user && current_user.role?(:admin) %>
+      <form method="get" action="<%= delete_address_path(address) %>">
+        <input type="submit" value="Delete" class="btn btn-small orange right waves-effect waves-effect-light">
+      </form>
+    <% end %>
   </div>
 </div>

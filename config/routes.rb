@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'item/:item_id/price' => 'item_prices#new', as: :new_price_for_item
   resources :users
 
+  # delete address
+  get 'delete-address/:id', to: 'addresses#destroy', as: :delete_address
+
   # Search
   get 'items/index', to: 'items#index', as: :item_search
   get 'cusstomers/index', to: 'customers#index', as: :customer_search
