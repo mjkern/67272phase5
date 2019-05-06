@@ -15,8 +15,8 @@
             <i class="material-icons right">arrow_drop_down</i>
           </a>
           <ul id='operationsMenu' class='dropdown-content'>
-            <li><%= link_to 'Baking', '#' %></li>
-            <li><%= link_to 'Shipping', '#' %></li>
+            <li><%= link_to 'Baking', baking_path %></li>
+            <li><%= link_to 'Shipping', shipping_path %></li>
           </ul>
 
           <a class='dropdown-trigger btn' href='#' data-target='manageMenu'>
@@ -40,6 +40,17 @@
           <li><a class="btn-floating btn-flat disabled" style="margin-left: -100%;"><p class="center" style="margin-top: -0.5em; color: #000000"><%= cart_size %></p></a></li>
          <!-- Dropdown Trigger -->
          <a class='dropdown-trigger btn' href='#' data-target='userMenu' style='margin-left: -2.5em;'><%= "Welcome, #{current_customer.first_name}" %><i class="material-icons right">arrow_drop_down</i></a>
+
+         <% else %>
+           <% if current_user.role?(:baker) %>
+             <li><%= link_to 'Baking List', baking_path %></li>
+           <% elsif current_user.role?(:shipper) %>
+             <li><%= link_to 'Shipping List', shipping_path %></li>
+           <% end %>
+           <li><%= link_to 'All Products', items_path %></li>
+           <a class='dropdown-trigger btn' href='#' data-target='userMenu'><%= "Welcome, #{current_user.username}" %>
+             <i class="material-icons right">arrow_drop_down</i>
+           </a>
 
         <% end %>
         <!--<li><%#= link_to 'Logout', logout_path, class: "waves-effect waves-light btn" %></li>-->
