@@ -1,0 +1,2 @@
+<%= f.input :item_id, collection: Item.alphabetical.map {|i| [i.name, i.id]}, selected: @item_id %>
+<%= f.input :price %>

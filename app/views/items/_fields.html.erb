@@ -1,0 +1,14 @@
+    <%= f.input :name %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :category, collection: Item::CATEGORIES %>
+    <%= f.input :units_per_item %>
+    <%= f.input :weight %>
+    <%= f.input :active %>
+    <div class="row">
+      <div class="col s12">
+        <div class="field">
+          <%= f.label :photo %><br />
+          <%= f.file_field :photo %>
+        </div>
+      </div>
+    </div>

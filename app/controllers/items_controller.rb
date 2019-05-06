@@ -45,7 +45,7 @@
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to @item, notice: "#{@item.name} was added to the system."
+      redirect_to new_price_for_item_path(@item.id), notice: "#{@item.name} was added to the system. Please give it an intial price."
     else
       render action: 'new'
     end
