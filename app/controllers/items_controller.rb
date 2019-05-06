@@ -6,22 +6,30 @@
   def toggle
     @item.active = !@item.active
     @item.save!
-    redirect_back fallback_location item_path(@item)
+    #redirect_back fallback_location: item_path(@item)
   end
 
   def index
-    # get info on active items for the big three...
-    @breads = Item.active.for_category('bread').alphabetical#.paginate(:page => params[:page]).per_page(10)
-    @muffins = Item.active.for_category('muffins').alphabetical#.paginate(:page => params[:page]).per_page(10)
-    @pastries = Item.active.for_category('pastries').alphabetical#.paginate(:page => params[:page]).per_page(10)
-    # get a list of any inactive items for sidebar
-    @inactive_items = Item.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @breads = Item.for_category('bread').alphabetical#.paginate(:page => params[:page]).per_page(10)
+    @muffins = Item.for_category('muffins').alphabetical#.paginate(:page => params[:page]).per_page(10)
+    @pastries = Item.for_category('pastries').alphabetical#.paginate(:page => params[:page]).per_page(10)
+    @items = Item.alphabetical
+    #@inactive_items = Item.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
+    if !(logged_in? && current_user.role?(:admin))
+      @breads = @breads.active
+      @muffins = @muffins.active
+      @pastries = @pastries.active
+      @items = @items.active
+    end
   end
 
   def show
     if logged_in? && current_user.role?(:admin)
       # admin gets a price history in the sidebar
       @previous_prices = @item.item_prices.chronological.to_a
+      @items = Item.alphabetical
+    else
+      @items = Item.active.alphabetical
     end
     # everyone sees similar items in the sidebar
     @similar_items = Item.for_category(@item.category).alphabetical.to_a

@@ -25,7 +25,7 @@
             <div class="switch">
               <label>
                 No
-                <input <%= if item.active then 'checked' end %> type="checkbox" onclick='toggleItem("<%= toggle_item_path(item) %>")()' %>
+                <input <%= if item.active then 'checked' end %> type="checkbox" onclick='toggleItem("<%= toggle_item_path(item) %>")()' />
                 <span class="lever"></span>
                 Yes
               </label>

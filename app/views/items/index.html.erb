@@ -10,7 +10,7 @@
 <div id="tabbed">
   <tabs>
     <tab name="All" v-bind:selected="true">
-      <%= render partial: 'all' %>
+      <%= render partial: 'all', locals: { items: @items } %>
     </tab>
 
     <tab name="Bread">
