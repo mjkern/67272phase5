@@ -9,7 +9,11 @@ class OrdersController < ApplicationController
   authorize_resource
 
   def index
-    orders = Order.chronological
+    if logged_in? and current_user.role?(:admin)
+      orders = Order.chronological
+    else
+      orders = Order.chronological.for_customer(current_customer)
+    end
     if @order
       page = (orders.index(@order) / 6) + 1
     end

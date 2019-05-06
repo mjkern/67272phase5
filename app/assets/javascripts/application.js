@@ -100,8 +100,12 @@ $(document).ready(function(){
   var instances = M.FormSelect.init(elems, options);
 
   // subtabs
-  // select
   var elems = document.querySelectorAll('.subtabs');
+  var options = {};
+  var instances = M.Tabs.init(elems, options);
+
+  // chart tabs
+  var elems = document.querySelectorAll('.chart-tabs');
   var options = {};
   var instances = M.Tabs.init(elems, options);
 
