@@ -17,6 +17,8 @@
 //= require vue
 //= require_tree .
 // require best_in_place
+//= require Chart.bundle
+//= require chartkick
 
 function toggleShipped(url) {
   return function() {

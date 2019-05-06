@@ -7,7 +7,13 @@
       <li class="tab col s3"><a href="#sales90">90 Days</a></li>
     </ul>
   </div>
-  <div id="sales7" class="col s12">Test 1</div>
-  <div id="sales30" class="col s12">Test 2</div>
-  <div id="sales90" class="col s12">Test 3</div>
+  <div id="sales7" class="col s12">
+    <%= line_chart Order.where("date > ?", 8.days.ago).group(:date).count, ytitle: "Total Orders", xtitle: "Day" %>
+  </div>
+  <div id="sales30" class="col s12">
+    <%= line_chart Order.where("date > ?", 30.days.ago).group(:date).count, ytitle: "Total Orders", xtitle: "Day" %>
+  </div>
+  <div id="sales90" class="col s12">
+    <%= line_chart Order.where("date > ?", 90.days.ago).group(:date).count, ytitle: "Total Orders", xtitle: "Day" %>
+  </div>
 </div>
