@@ -10,7 +10,8 @@ class CartController < ApplicationController
 
   def add()
     add_item_to_cart(params[:item_id])
-    redirect_back fallback_location: root_path
+    @item = Item.find(params[:item_id])
+    redirect_back fallback_location: root_path, notice: "#{@item.name} added to cart"
   end
 
   def sub()
@@ -20,12 +21,14 @@ class CartController < ApplicationController
         session[:cart][id] -= 1
       end
     end
-    redirect_back fallback_location: cart_path
+    @item = Item.find(params[:item_id])
+    redirect_back fallback_location: cart_path, notice: "One #{@item.name} removed from your cart"
   end
 
   def remove()
     remove_item_from_cart(params[:item_id])
-    redirect_back fallback_location: cart_path
+    @item = Item.find(params[:item_id])
+    redirect_back fallback_location: cart_path, notice: "#{@item.name} removed from cart"
   end
 
   private

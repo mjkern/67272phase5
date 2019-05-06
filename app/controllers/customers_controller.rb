@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # for authorization
-  before_action :check_login
+  before_action :check_login, except: [:new, :create]
   authorize_resource
 
   def index
