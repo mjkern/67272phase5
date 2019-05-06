@@ -9,6 +9,8 @@ module ApplicationHelper
       addresses = Address.active.by_recipient.to_a
     else
       addresses = current_customer.addresses.by_recipient.to_a
+      #addresses -= [current_customer.billing_address]
+      #addresses.unshift(current_customer.billing_address)
     end
     addresses.map{|addr| ["#{addr.recipient} : #{addr.street_1}", addr.id] }
   end

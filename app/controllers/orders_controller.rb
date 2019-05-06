@@ -25,6 +25,9 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.order_items = get_list_of_items_in_cart
+    @order.date = Date.current
+    @order.grand_total = calculate_cart_items_cost + calculate_cart_shipping_cost
     @months = (1..12).map {|n| [n.to_s, n]}
     @years = (0..5).map {|y| [y.years.from_now.year.to_s, y.years.from_now.year]}
   end

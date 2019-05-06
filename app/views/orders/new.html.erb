@@ -7,32 +7,49 @@
   <%= simple_form_for @order, html: { class: 'form-horizontal' } do |f| %>
     <ul class="collapsible">
       <li class="active">
-        <div class="collapsible-header">Select Address</div>
+        <div class="collapsible-header">Step 1: Select Address</div>
         <div class="collapsible-body">
           <div class="row">
             <div class="col s12">
               <!--
-              <% for option in get_address_options %>
+              <%# for option in get_address_options %>
                 <p>
                   <label>
                     <input name="order[address]" id="order_address" type="radio">
-                    <span><%= option[0] %></span>
+                    <span><%#= option[0] %></span>
                   </label>
                 </p>
-              <% end %>
+              <%# end %>
               -->
-              <%= f.input :address_id, collection: get_address_options, as: :select %>
+              <%# f.input_field :address_id,
+                collection: get_address_options,
+                as: :radio_buttons,
+                id: 'address-checkout-select',
+                boolean_style: :nested %>
+              <% if current_user.role?(:admin) %>
+                <%= f.input :address_id,
+                  collection: get_address_options,
+                  as: :select %>
+              <% else %>
+                <%= f.input :address_id,
+                  collection: get_address_options,
+                  as: :select,
+                  selected: current_customer.billing_address.id %>
+              <% end %>
+
             </div>
           </div>
 
         </div>
       </li>
       <li>
-        <div class="collapsible-header">Review Purchase</div>
-        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+        <div class="collapsible-header">Step 2: Review Purchase</div>
+        <div class="collapsible-body">
+          <%= render partial: 'partials/order_summary', locals: { order: @order } %>
+        </div>
       </li>
       <li>
-        <div class="collapsible-header">Payment Info</div>
+        <div class="collapsible-header">Step 3: Payment Info</div>
         <div class="collapsible-body">
           <div class="row">
             <div class="col s12">
@@ -45,7 +62,7 @@
       </li>
     </ul>
     <div class="form-actions">
-      <%= f.submit nil, :class => 'button radius' %>
+      <%= f.submit nil, :class => 'btn waves-effect waves-effect-light' %>
       <%= link_to 'Cancel', cart_path, :class => 'button alert radius' %>
     </div>
   <% end %>

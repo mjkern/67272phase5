@@ -1,0 +1,40 @@
+
+        <table class="highlight">
+          <thead>
+            <th>Items</th>
+            <th>Quantity</th>
+            <th>Item Subtotal</th>
+          </thead>
+          <% for oi in order.order_items %>
+            <tr>
+              <td><%= link_to oi.item.name, item_path(oi.item) %></td>
+              <td><%= oi.quantity %></td>
+              <td><%= number_to_currency oi.subtotal order.date %></td>
+            </tr>
+          <% end %>
+        </table>
+        <div class="row"></div>
+        <div class="row">
+          <div class="col s4">
+            <ul class="collection">
+                <li class="collection-item">
+                  <div>
+                    Subtotal
+                    <span class="secondary-content"><%= number_to_currency order.grand_total - order.shipping_costs %></span>
+                  </div>
+                </li>
+                <li class="collection-item">
+                  <div>
+                    Shipping Cost
+                    <span class="secondary-content"><%= number_to_currency order.shipping_costs %></span>
+                  </div>
+                </li>
+                <li class="collection-item">
+                  <div>
+                    Order Total
+                    <span class="secondary-content"><%= number_to_currency order.grand_total %></span>
+                  </div>
+                </li>
+            </ul>
+          </div>
+        </div>
