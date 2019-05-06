@@ -1,5 +1,9 @@
 <div class="container">
   <h4>My Cart</h4>
+  <% if cart_size == 0 %>
+    <h6>Your cart is currently empty</h6>
+    <%= link_to 'Start Shopping', items_path, class: "waves-effect waves-light btn" %>
+  <% else %>
         <table class="highlight">
           <thead>
             <th>Items</th>
@@ -10,7 +14,13 @@
           <% for oi in @order_items %>
             <tr>
               <td><%= link_to oi.item.name, item_path(oi.item) %></td>
-              <td><%= oi.quantity %></td>
+              <td class="valign-wrapper">
+                <a href="<%= add_cart_path(oi.item_id) %>"><i class="material-icons">arrow_upward</i></a>
+                <%= oi.quantity %>
+                <% if oi.quantity > 1 %>
+                  <a href="<%= sub_cart_path(oi.item_id) %>"><i class="material-icons">arrow_downward</i></a>
+                <% end %>
+              </td>
               <td><%= number_to_currency oi.subtotal Date.today.to_date %></td>
               <td><a href="<%= remove_cart_path(oi.item_id) %>" class="secondary-content"><i class="material-icons">close</i></a><td>
             </tr>
@@ -41,7 +51,8 @@
             </ul>
           </div>
         </div>
-  <div class="row">
-    <%= link_to 'Checkout', new_order_path, class: "waves-effect waves-light btn" %>
-  </div>
+    <div class="row">
+      <%= link_to 'Checkout', new_order_path, class: "waves-effect waves-light btn" %>
+    </div>
+  <% end %>
 </div>
