@@ -8,8 +8,15 @@ class CustomersController < ApplicationController
   authorize_resource
 
   def index
-    @active_customers = Customer.active.alphabetical.paginate(:page => params[:page]).per_page(10)
-    @inactive_customers = Customer.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @search = params[:search]
+    if @search
+      term = "%#{@search}%"
+      customers = Customer.where("first_name LIKE ? OR last_name LIKE ?", term, term)
+    else
+      customers = Customer.all
+    end
+    @active_customers = customers.active.alphabetical.paginate(:page => params[:page]).per_page(10)
+    @inactive_customers = customers.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)
   end
 
   def show

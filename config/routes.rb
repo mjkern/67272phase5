@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   # Search
   get 'items/index', to: 'items#index', as: :item_search
+  get 'cusstomers/index', to: 'customers#index', as: :customer_search
 
   # Toggling and order item
   get 'toggle/:id', to: 'order_items#toggle', as: :toggle
