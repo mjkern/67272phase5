@@ -1,0 +1,9 @@
+<%= simple_form_for @user, html: { class: 'form-horizontal' } do |f| %>
+
+  <%= render partial: 'fields', locals: { f: f } %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn waves-effect waves-effect-light' %>
+      <%= link_to 'Cancel', :back, :class => 'button alert radius' %>
+    </div>
+<% end %>

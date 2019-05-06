@@ -2,6 +2,12 @@
 ---
 I, Matthew Kern, have created this repository from the pahse 5 starter code.
 
+Some Notes that I actually would like you to read:
+
+- Your db:populate script may or may not mark empoyees as active or inactive. For reporting purposes, employees with a null field are generally treated as inactive by my application, but this is not an ideal way to handle it for a number of reasons. I would encourage you to make sure that all users are either active or inactive, but if you don't I would ask for some a little ui/ux leaway where relavent. See my piazza post if you're interested.
+
+Other stuff that I don't care if you read:
+
 To set this up, clone this repository, run the `bundle install` command to ensure you have all the needed gems and then create the database with `rake db:migrate`.  If you want to populate the system with fictitious, but somewhat realistic data, you can run the `rake db:populate` command.  The populate script will create:
 - 120 customers
 - over 600 orders

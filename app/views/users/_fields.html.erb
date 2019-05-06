@@ -3,6 +3,6 @@
     <%= f.input :password_confirmation, input_html: {class: "avg"} %>
     <%# f.input :email, input_html: {class: "avg"} %>
     <% if logged_in? and current_user.role?(:admin) %>
-      <%= f.input :role, input_html: {class: "avg"} %>
+      <%= f.input :role, collection: User::ROLES, input_html: {class: "avg"} %>
       <%= f.input :active %>
     <% end %>

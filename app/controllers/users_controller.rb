@@ -22,19 +22,18 @@ class UsersController < ApplicationController
   def edit
   end
 
-  # junk
   def create
-    if @customer.save
-      redirect_to addresses_new_path, notice: "#{@customer.proper_name} was added to the system."
+    if @user.save
+      redirect_back fallback_location: home_path, notice: "#{@user.username} was added to the system."
     else
-      puts "it did not work..."
+      render action: 'edit', notice: "Please properly fill in all fields"
     end
   end
 
   #junk
   def update
-    if @customer.update(customer_params)
-      redirect_to @customer, notice: "#{@customer.proper_name} was revised in the system."
+    if @user.update(user_params)
+      redirect_to @user, notice: "#{@user.username} was revised in the system."
     else
       render action: 'edit'
     end
