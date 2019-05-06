@@ -5,12 +5,14 @@
             <th>Items</th>
             <th>Quantity</th>
             <th>Item Subtotal</th>
+            <th></th>
           </thead>
           <% for oi in @order_items %>
             <tr>
               <td><%= link_to oi.item.name, item_path(oi.item) %></td>
               <td><%= oi.quantity %></td>
               <td><%= number_to_currency oi.subtotal Date.today.to_date %></td>
+              <td><a href="<%= remove_cart_path(oi.item_id) %>" class="secondary-content"><i class="material-icons">close</i></a><td>
             </tr>
           <% end %>
         </table>

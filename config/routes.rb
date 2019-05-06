@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   # cart
   get 'add-to-cart/:item_id' => 'cart#add', as: :add_cart
   get 'cart' => 'cart#index', as: :cart
+  get 'remove-from-cart/:item_id' => 'cart#remove', as: :remove_cart
+  get 'subtract-from-cart/:item_id' => 'cart#sub', as: :sub_cart
   #resources :cart, only: [:index]
 
   # Semi-static page routes

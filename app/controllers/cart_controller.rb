@@ -13,6 +13,21 @@ class CartController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
+  def sub()
+    id = params[:item_id]
+    if session[:cart].keys.include?(id)
+      if session[:cart][id] > 0
+        session[:cart][id] -= 1
+      end
+    end
+    redirect_back fallback_location: cart_path
+  end
+
+  def remove()
+    remove_item_from_cart(params[:item_id])
+    redirect_back fallback_location: cart_path
+  end
+
   private
   def cart_params
     params.permit(:item_id)
