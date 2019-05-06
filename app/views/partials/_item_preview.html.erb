@@ -1,9 +1,9 @@
 <div class="card">
   <div class="card-image">
     <%= render partial: 'partials/item_image', locals: { item: item } %>
-    <% if current_user.role?(:customer) %>
+    <% if current_user and current_user.role?(:customer) %>
       <a href="<%= add_cart_path(item) %>" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
-    <% elsif current_user.role?(:admin) %>
+    <% elsif current_user and current_user.role?(:admin) %>
       <a href="<%= edit_item_path(item) %>" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">edit</i></a>
     <% end %>
 	</div>
@@ -11,23 +11,15 @@
     <h6><%= link_to item.name, item_path(item) %></h6>
     <p><%= number_to_currency item.current_price %></p>
   </div>
-        <% if current_user.role?(:admin) %>
-  <div class="card-action">
-            Active:
-            <div class="switch">
-              <label>
-                <input <%= if item.active then 'checked' end %> type="checkbox" onclick='toggleItem("<%= toggle_item_path(item) %>")()' />
-                <span class="lever"></span>
-              </label>
-            </div>
-        </div>
-          <% end %>
-  <!--
-  <div class="card-action">
-    <a href="<%= item_path(item) %>" class="waves-effect waves-light btn-small">View<i class="material-icons right">visibility</i></a>
-    <% if current_user.role?(:admin) %>
-      <a href="<%= edit_item_path(item) %>" class="waves-effect waves-light btn-small">Edit</a>
-    <% end %>
+  <% if current_user and current_user.role?(:admin) %>
+    <div class="card-action">
+      Active:
+      <div class="switch">
+        <label>
+          <input <%= if item.active then 'checked' end %> type="checkbox" onclick='toggleItem("<%= toggle_item_path(item) %>")()' />
+          <span class="lever"></span>
+        </label>
+      </div>
     </div>
-  -->
+  <% end %>
 </div>
