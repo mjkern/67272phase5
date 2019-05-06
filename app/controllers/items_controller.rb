@@ -60,8 +60,9 @@
   end
 
   def destroy
-    @item.destroy
-    redirect_to items_url, notice: "#{@item.name} was removed from the system."
+    if !@item.destroy
+      redirect_to item_url(@item), notice: "#{@item.name} could not be destroyed"
+    end
   end
 
   private

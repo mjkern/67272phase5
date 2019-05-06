@@ -37,6 +37,30 @@ function toggleItem(url) {
   }
 }
 
+function itemDeleted(redirectUrl){
+  return function(junk){
+    //window.location = redirectUrl;
+    M.toast({html: 'Item deleted, redirecting...'})
+  }
+}
+
+function itemNotDeleted(junk) {
+  M.toast({html: 'Item could not be deleted.'})
+}
+
+function deleteItem(deleteUrl, redirectUrl) {
+  return function() {
+    console.log("deleting item " + deleteUrl);
+    $.ajax({
+      method: 'DELETE',
+      url: deleteUrl,
+      success: itemDeleted(redirectUrl),
+      failure: itemNotDeleted,
+      complete: (function(){ window.location=redirectUrl;})
+    });
+  };
+}
+
 // init everything
 $(document).ready(function(){
 

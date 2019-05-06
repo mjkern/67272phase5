@@ -41,6 +41,7 @@
       <%= link_to "Back", :back %>
       <% if current_user and current_user.role?(:admin) %>
         <%= link_to "Edit", edit_item_path(item) %>
+        <a onclick='deleteItem("<%= item_url(item) %>", "<%= items_url %>")();'>Delete</a>
         <%#= link_to "Delete", delete_item_path(item) %>
       <% end %>
     </div>
