@@ -1,0 +1,6 @@
+
+<% if !logged_in? %>
+  <%= render :partial => 'general_home' %>
+<% else %>
+  <%= render :partial => 'shipper_home' %>
+<% end %>

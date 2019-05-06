@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   get 'subtract-from-cart/:item_id' => 'cart#sub', as: :sub_cart
   #resources :cart, only: [:index]
 
+  # dashboards
+  get 'shipping' => 'home#shipping', as: :shipping
+  get 'baking' => 'home#baking', as: :baking
+
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
   get 'about' => 'home#about', as: :about
