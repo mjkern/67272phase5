@@ -10,13 +10,16 @@
         </ul>
       </div>
       <div id="sales7" class="col s12">
-        <%= line_chart Order.where("date > ?", 8.days.ago).group(:date).count, ytitle: "Total Orders", xtitle: "Day" %>
+        <%= line_chart get_sales_history(7),
+          ytitle: "Total Sales ($)", xtitle: "Day" %>
       </div>
       <div id="sales30" class="col s12">
-        <%= line_chart Order.where("date > ?", 30.days.ago).group(:date).count, ytitle: "Total Orders", xtitle: "Day" %>
+        <%= line_chart get_sales_history(30),
+          ytitle: "Total Sales ($)", xtitle: "Day" %>
       </div>
       <div id="sales90" class="col s12">
-        <%= line_chart Order.where("date > ?", 90.days.ago).group(:date).count, ytitle: "Total Orders", xtitle: "Day" %>
+        <%= line_chart get_sales_history(90),
+          ytitle: "Total Sales ($)", xtitle: "Day" %>
       </div>
     </div>
   </div>
