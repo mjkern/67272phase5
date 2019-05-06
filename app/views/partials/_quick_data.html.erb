@@ -1,0 +1,10 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">Todays Stats</span>
+    <ul class="collection">
+      <li class="collection-item"><b>Total Sales: </b><%= number_to_currency Order.where(date: Date.today).sum(:grand_total) %></li>
+      <li class="collection-item"><b>Total <%= link_to "Orders", orders_path %>: </b><%= Order.where(date: Date.today).count %></li>
+      <li class="collection-item"><b>Total <%= link_to "Items to Bake", baking_path %>: </b><%= (get_baking_list.map {|i| i[1]}).sum() %></li>
+    </ul>
+  </div>
+</div>
