@@ -15,7 +15,7 @@
               <ul class="collection">
                 <% for item in order.items %>
                   <li class="collection-item">
-                    <div><%= item.name %>
+                    <div><%= link_to item.name, item_path(item) %>
                       <a href="<%= add_cart_path(item) %>" class="secondary-content btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
                     </div>
                   </li>

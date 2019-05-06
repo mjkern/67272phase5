@@ -32,7 +32,7 @@
       @items = Item.active.alphabetical
     end
     # everyone sees similar items in the sidebar
-    @similar_items = Item.for_category(@item.category).alphabetical.to_a
+    @similar_items = Item.for_category(@item.category).alphabetical.limit(10).to_a - [@item]
   end
 
   def new
