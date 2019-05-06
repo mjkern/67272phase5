@@ -46,6 +46,10 @@
         <div class="collapsible-header">Step 2: Review Purchase</div>
         <div class="collapsible-body">
           <%= render partial: 'partials/order_summary', locals: { order: @order } %>
+          <div class="row">
+            <%# link_to "Edit Order", cart_path, inner_html: {class: 'btn waves-effect waves-effect-light red right'} %>
+            <a href="<%= cart_path %>" class="waves-effect waves-light btn btn-small red right">Edit Order</a>
+          </div>
         </div>
       </li>
       <li>
@@ -53,9 +57,30 @@
         <div class="collapsible-body">
           <div class="row">
             <div class="col s12">
-              <%= f.input :credit_card_number, as: :string, input_html: {class: "avg"} %>
-              <%= f.input :expiration_month, collection: @months %>
-              <%= f.input :expiration_year, collection: @years %>
+              <div class="row">
+                <div class="col s3">
+                  <h6>Billing Address:</h6>
+                  <a href="<%= customer_path(current_customer) %>" class="waves-effect waves-light btn btn-small red">Change</a>
+                </div>
+                <div class="col s5">
+                  <%= render partial: 'partials/address_card', locals: { address: current_customer.billing_address } %>
+                </div>
+                <div class="col s4">
+                </div>
+              </div>
+            </div>
+            <div class="col s12">
+              <div class="row">
+                <div class="col s12">
+                  <%= f.input :credit_card_number, as: :string, input_html: {class: "col s12"} %>
+                </div>
+                <div class="col s4">
+                  <%= f.input :expiration_month, collection: @months, input_html: {class: "col s6"} %>
+                </div>
+                <div class="col s4">
+                  <%= f.input :expiration_year, collection: @years, input_html: {class: "col s6"} %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
