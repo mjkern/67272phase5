@@ -16,6 +16,7 @@
   <% if can? :edit, @customer %>
     <div class="card-action">
       <%= link_to 'Edit', edit_customer_path(@customer) %>
+      <%= link_to 'All Customers', customers_path %>
     </div>
   <% end %>
 </div>

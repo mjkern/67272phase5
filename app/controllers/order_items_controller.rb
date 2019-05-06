@@ -3,8 +3,7 @@ class OrderItemsController < ApplicationController
   before_action :set_order_item
 
   # for authorization
-  before_action :check_login
-  authorize_resource
+  #authorize_resource
 
   def toggle
     if @order_item.shipped_on.nil?

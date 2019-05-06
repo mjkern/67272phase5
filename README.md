@@ -6,6 +6,7 @@ Some Notes that I actually would like you to read:
 
 - Your db:populate script may or may not mark empoyees as active or inactive. For reporting purposes, employees with a null field are generally treated as inactive by my application, but this is not an ideal way to handle it for a number of reasons. I would encourage you to make sure that all users are either active or inactive, but if you don't I would ask for some a little ui/ux leaway where relavent. See my piazza post if you're interested.
 - I used the chartkick gem in addition to many that were recommended by prof h. It is awesome - would highly recommend
+- Generally customers only see inactive items when viewing their past orders. Trying to order inactive items will fail, and can cause problems with the shipping list as well.
 
 Other stuff that I don't care if you read:
 

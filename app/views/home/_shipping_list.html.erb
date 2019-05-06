@@ -1,6 +1,7 @@
 <% if !orders || orders.count == 0 %>
   <h6>Nothing to ship right now</h6>
 <% else %>
+  <p>Check-off shipped items, and <a href="<%= shipping_path %>">reload</a> the page when you want to see an updated version of the shipping list. This gives you a chance to un-check any items that you may have accidentally clicked.</p>
   <ul class="collapsible">
         <% for order in orders %>
           <% ois = order.order_items %>
@@ -34,7 +35,7 @@
                 <% for oi in ois %>
                   <% item = oi.item %>
                   <tr>
-                    <td><%= item.name %></td>
+                    <td><a href="<%= item_path(item) %>"><%= item.name %></a></td>
                     <td><%= oi.quantity %></td>
                     <td>
 											<p>
