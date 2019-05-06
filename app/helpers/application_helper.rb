@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def get_top_customers(days_back)
+    Order.where("date > ?", (days_back+1).days.ago)
+      .group(:customer_id)
+      .select("customer_id, SUM(grand_total) AS s")
+      .order("s desc").limit(6)
+      .map {|o| [Customer.find(o.customer_id).name, o.s] }
+  end
+
   def format_date(date)
     date.strftime("%m/%d/%y")
   end
