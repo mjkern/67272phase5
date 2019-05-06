@@ -11,15 +11,17 @@
           <p class="">Price: <%= number_to_currency item.current_price %></p>
         </div>
         <div class="col s4">
-          <% if current_user.role?(:customer) %>
+          <% if current_user and current_user.role?(:customer) %>
             <a href="<%= add_cart_path(item) %>" class="btn-floating waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+          <% else %>
+            <a href="<%= new_price_for_item_path(item) %>">Update Price</a>
           <% end %>
         </div>
         <div class="col s4">
         </div>
       </div>
       <div class="row">
-        <% if current_user.role?(:admin) %>
+        <% if current_user and current_user.role?(:admin) %>
           <div class="col s12">
             Active:
             <div class="switch">
@@ -37,7 +39,7 @@
     </div>
     <div class="card-action">
       <%= link_to "Back", :back %>
-      <% if current_user.role?(:admin) %>
+      <% if current_user and current_user.role?(:admin) %>
         <%= link_to "Edit", edit_item_path(item) %>
         <%#= link_to "Delete", delete_item_path(item) %>
       <% end %>
