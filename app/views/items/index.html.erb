@@ -1,11 +1,21 @@
 <h4>Our Products</h4>
-<form>
-  <div class="input-field" method="GET" action="<%= item_search_path %>" >
-    <input id="search" type="search" name="search" required>
-    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-    <i class="material-icons">close</i>
+<div class="row valign-wrapper">
+  <div class="col s6">
+    <nav>
+      <div class="nav-wrapper">
+            <form>
+              <div class="input-field" method="GET" action="<%= item_search_path %>" >
+                <input id="search" type="search" name="search" value="<%= @search %>">
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              </div>
+            </form>
+      </div>
+    </nav>
   </div>
-</form>
+  <div class="col s6">
+    <a href="<%= items_path %>" class="btn waves-effect waves-effect-light"><i class="material-icons left">close</i>Clear Search</a>
+  </div>
+</div>
 
 <% if logged_in? and current_user.role?(:admin) %>
   <div class="row">

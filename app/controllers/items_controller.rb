@@ -10,8 +10,7 @@
   end
 
   def index
-    puts "in the index action ----------------------------------------------------------------------------------------------------------------------"
-    p params[:search]
+    @search = params[:search]
     if params[:search]
       items = Item.where('name LIKE ?', "%#{params[:search]}%")
     else
