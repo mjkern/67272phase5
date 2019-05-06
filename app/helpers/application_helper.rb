@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def get_top_items(days_back)
+    OrderItem.group(:item_id).where("shipped_on > ?", (days_back+1).days.ago).select("item_id, SUM(quantity) AS s").order("s desc").limit(6).map{|oi| [oi.item.name, oi.s]}
+  end
+
   def get_top_customers(days_back)
     Order.where("date > ?", (days_back+1).days.ago)
       .group(:customer_id)
