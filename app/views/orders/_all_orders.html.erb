@@ -1,4 +1,4 @@
-<% if @all_orders.empty? %>
+<% if @all_orders.count == 0 %>
   <p><em>There are no orders at this time.</em></p>
 <% else %>
   <%= render :partial => "order_list", locals: {status: 'All', orders: @all_orders} %>

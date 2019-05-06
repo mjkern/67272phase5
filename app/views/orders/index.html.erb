@@ -1,5 +1,12 @@
 <div class="container">
   <h4>Order History</h4>
-  <%= render partial: "partials/orders_list", locals: { orders: @all_orders } %>
+  <% if @all_orders.count == 0 %>
+    <h6>No orders to show</h6>
+    <% if current_user and current_user.role?(:customer) %>
+      <a href="<%= items_path %>" class="btn waves-effect waves-effect-light">Shop Now</a>
+    <% end %>
+  <% else %>
+    <%= render partial: "partials/orders_list", locals: { orders: @all_orders } %>
+  <% end %>
 </div>
 
