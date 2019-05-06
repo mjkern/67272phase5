@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   # Toggling and order item
   get 'toggle/:id', to: 'order_items#toggle', as: :toggle
 
+  # Toggling and item
+  get 'toggle-item/:id', to: 'items#toggle', as: :toggle_item
+
   # Logging in and out
   resources :sessions
   get 'login' => 'sessions#new', as: :login

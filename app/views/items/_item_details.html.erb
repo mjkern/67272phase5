@@ -11,15 +11,36 @@
           <p class="">Price: <%= number_to_currency item.current_price %></p>
         </div>
         <div class="col s4">
-          <a href="<%= add_cart_path(item) %>" class="btn-floating waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+          <% if current_user.role?(:customer) %>
+            <a href="<%= add_cart_path(item) %>" class="btn-floating waves-effect waves-light red"><i class="material-icons">add_shopping_cart</i></a>
+          <% end %>
         </div>
         <div class="col s4">
         </div>
       </div>
+      <div class="row">
+        <% if current_user.role?(:admin) %>
+          <div class="col s12">
+            Active:
+            <div class="switch">
+              <label>
+                No
+                <input <%= if item.active then 'checked' end %> type="checkbox" onclick='toggleItem("<%= toggle_item_path(item) %>")()' %>
+                <span class="lever"></span>
+                Yes
+              </label>
+            </div>
+          </div>
+        <% end %>
+      </div>
       <p><%= item.description %></p>
     </div>
     <div class="card-action">
-      <a href="<%= items_path %>"> Back to All Items</a>
+      <%= link_to "Back", :back %>
+      <% if current_user.role?(:admin) %>
+        <%= link_to "Edit", edit_item_path(item) %>
+        <%#= link_to "Delete", delete_item_path(item) %>
+      <% end %>
     </div>
   </div>
 </div>

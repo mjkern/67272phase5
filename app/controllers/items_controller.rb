@@ -1,7 +1,13 @@
   class ItemsController < ApplicationController
   before_action :check_login, except: [:index, :show]
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :toggle]
   authorize_resource
+
+  def toggle
+    @item.active = !@item.active
+    @item.save!
+    redirect_back fallback_location item_path(@item)
+  end
 
   def index
     # get info on active items for the big three...

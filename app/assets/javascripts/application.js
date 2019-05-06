@@ -27,6 +27,16 @@ function toggleShipped(url) {
   }
 }
 
+
+function toggleItem(url) {
+  return function() {
+    console.log("toggleing item " + url);
+    $.ajax({
+      url: url
+    });
+  }
+}
+
 // init everything
 $(document).ready(function(){
 
