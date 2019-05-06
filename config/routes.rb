@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'item/:item_id/price' => 'item_prices#new', as: :new_price_for_item
   resources :users
 
+  # Search
+  get 'items/index', to: 'items#index', as: :item_search
+
   # Toggling and order item
   get 'toggle/:id', to: 'order_items#toggle', as: :toggle
 
