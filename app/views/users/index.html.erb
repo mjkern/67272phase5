@@ -12,5 +12,10 @@
         <%= render partial: 'subtabs', locals: { name: "shippers", active_users: @active_shippers, inactive_users: @inactive_shippers } %>
       </tab>
     </tabs>
-  <div>
+  </div>
+  <div class="row">
+    <div class="col s12">
+      <a href="<%= new_user_path %>" class="waves-effect waves-light btn">Add Employee</a>
+    </div>
+  </div>
 </div>

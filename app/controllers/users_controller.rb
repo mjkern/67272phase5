@@ -5,9 +5,9 @@ class UsersController < ApplicationController
     @active_admin = User.active.where('role = "admin"').alphabetical
     @active_bakers = User.active.where('role = "baker"').alphabetical
     @active_shippers = User.active.where('role = "shipper"').alphabetical
-    @inactive_admin = User.inactive.where('role = "admin"').alphabetical
-    @inactive_bakers = User.inactive.where('role = "baker"').alphabetical
-    @inactive_shippers = User.inactive.where('role = "shipper"').alphabetical
+    @inactive_admin = User.where('active = "f" OR active ISNULL').where('role = "admin"').alphabetical
+    @inactive_bakers = User.where('active = "f" OR active ISNULL').where('role = "baker"').alphabetical
+    @inactive_shippers = User.where('active = "f" OR active ISNULL').where('role = "shipper"').alphabetical
   end
 
   def show
@@ -17,14 +17,16 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def edit
   end
 
   def create
+    @user = User.new(user_params)
     if @user.save
-      redirect_back fallback_location: home_path, notice: "#{@user.username} was added to the system."
+      redirect_to users_path, notice: "#{@user.username} was added to the system."
     else
       render action: 'edit', notice: "Please properly fill in all fields"
     end

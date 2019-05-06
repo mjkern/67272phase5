@@ -2,7 +2,7 @@
   <% for user in users %>
     <li class="collection-item">
       <div>
-        <%= link_to user.username user_path(user) %>
+        <%= link_to user.username, user_path(user) %>
         <a href="<%= edit_user_path(user) %>" class="secondary-content"><i class="material-icons">edit</i></a>
       </div>
     </li>
