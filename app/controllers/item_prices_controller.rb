@@ -1,5 +1,10 @@
 class ItemPricesController < ApplicationController
 
+
+  # for authorization
+  before_action :check_login
+  authorize_resource
+
   def new
     @item_price = ItemPrice.new
     @item_id = params[:item_id]

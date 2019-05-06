@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  # for authorization
+  before_action :check_login
+  authorize_resource
+
   def index
     @active_admin = User.active.where('role = "admin"').alphabetical
     @active_bakers = User.active.where('role = "baker"').alphabetical

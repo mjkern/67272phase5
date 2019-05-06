@@ -3,6 +3,10 @@ class CustomersController < ApplicationController
   include ActionView::Helpers::NumberHelper
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
+  # for authorization
+  before_action :check_login
+  authorize_resource
+
   def index
     @active_customers = Customer.active.alphabetical.paginate(:page => params[:page]).per_page(10)
     @inactive_customers = Customer.inactive.alphabetical.paginate(:page => params[:page]).per_page(10)

@@ -1,6 +1,9 @@
 class OrderItemsController < ApplicationController
   before_action :check_login
   before_action :set_order_item
+
+  # for authorization
+  before_action :check_login
   authorize_resource
 
   def toggle

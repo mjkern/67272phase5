@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
 
+  # for authorization
+  #authorize_resource
+
   def home
     if logged_in?
       if current_user.role?(:shipper)
