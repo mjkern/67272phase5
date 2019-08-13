@@ -1,14 +1,15 @@
-67-272: Bread Express
+67-272: Baking Factory
 ---
-I, Matthew Kern, have created this repository from the pahse 5 starter code.
 
-Some Notes that I actually would like you to read:
+Hello, thanks for checking out my project. I, Matthew Kern, have created this repository from the phase 5 starter code for the Application Design and Development class at Carnegie Mellon University (67-272). This project was created in 5 phases, each of which built on the previous one. The starter code for each phase was essentially the solution of the previous phase so, although this was bases off of the starter code, I essentially built this myself over the course of one semester. Due to the size of the project and the compressed time scale, I will admit to failing a few convensions and style guidelines in some places and appologize for any inconvenience, although I think the overal quality of the work is still impressive which is why I am posting it. Please do reach out to me at mjkern@andrew.cmu.edu if you have any questions, and please do not use this code for your own homework/assignments (while I do have permission to post this code I still would like to avoid academic integrity issues). The remainder of the readme is essentially left as I submitted it for grading.
+
+Some Notes:
 
 - Your db:populate script may or may not mark empoyees as active or inactive. For reporting purposes, employees with a null field are generally treated as inactive by my application, but this is not an ideal way to handle it for a number of reasons. I would encourage you to make sure that all users are either active or inactive, but if you don't I would ask for some a little ui/ux leaway where relavent. See my piazza post if you're interested.
 - I used the chartkick gem in addition to many that were recommended by prof h. It is awesome - would highly recommend
 - Generally customers only see inactive items when viewing their past orders. Trying to order inactive items will fail, and can cause problems with the shipping list as well.
 
-Other stuff that I don't care if you read:
+Other Stuff:
 
 To set this up, clone this repository, run the `bundle install` command to ensure you have all the needed gems and then create the database with `rake db:migrate`.  If you want to populate the system with fictitious, but somewhat realistic data, you can run the `rake db:populate` command.  The populate script will create:
 - 120 customers
